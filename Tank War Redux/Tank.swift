@@ -20,8 +20,8 @@ class Tank{
     var tankview:UIView
     var dirTime:Int = 0
     var walkTime:Int = 0
-    static let paintWidth:CGFloat = 414
-    static let paintHeigth:CGFloat = 600
+    static let paintWidth:CGFloat = 600
+    static let paintHeight:CGFloat = 414
     static let image1=UIImage(named: "p1-cell1.png")!
     static let image2=UIImage(named: "p1-cell2.png")!
     static let image3=UIImage(named: "p1-cell3.png")!
@@ -89,7 +89,7 @@ class Tank{
             }
         }
         else if playerTankToward == .down && isWalk==true{
-            if(self.y+Tank.speed <= Tank.paintHeigth-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),tanks:self.myClient.tanks,badi:badi)){
+            if(self.y+Tank.speed <= Tank.paintHeight-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),tanks:self.myClient.tanks,badi:badi)){
                 self.y += Tank.speed
             }
         }
@@ -113,7 +113,7 @@ class Tank{
                 }
             }
             else if playerTankToward == .down && isWalk==true{
-                if(self.y+Tank.speed <= Tank.paintHeigth-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),tanks:self.myClient.tanks)){
+                if(self.y+Tank.speed <= Tank.paintHeight-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),tanks:self.myClient.tanks)){
                     self.y += Tank.speed
                 }
             }

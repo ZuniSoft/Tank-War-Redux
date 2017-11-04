@@ -12,7 +12,7 @@
 		E1787D361FACE3B3008FD5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1787D351FACE3B3008FD5AF /* Assets.xcassets */; };
 		E1787D391FACE3B3008FD5AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1787D371FACE3B3008FD5AF /* LaunchScreen.storyboard */; };
 		E1787D411FACE458008FD5AF /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D401FACE458008FD5AF /* BluetoothViewController.swift */; };
-		E1787D431FACE4EE008FD5AF /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D421FACE4EE008FD5AF /* SubViewController.swift */; };
+		E1787D431FACE4EE008FD5AF /* SingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D421FACE4EE008FD5AF /* SingleViewController.swift */; };
 		E1787D4A1FACE582008FD5AF /* JSAnalogueStick.m in Sources */ = {isa = PBXBuildFile; fileRef = E1787D461FACE582008FD5AF /* JSAnalogueStick.m */; };
 		E1787D4B1FACE582008FD5AF /* JSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E1787D471FACE582008FD5AF /* JSButton.m */; };
 		E1787D4D1FACE79B008FD5AF /* BluetoothTankWarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */; };
@@ -35,7 +35,7 @@
 		E1787D381FACE3B3008FD5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1787D3A1FACE3B3008FD5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1787D401FACE458008FD5AF /* BluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
-		E1787D421FACE4EE008FD5AF /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
+		E1787D421FACE4EE008FD5AF /* SingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewController.swift; sourceTree = "<group>"; };
 		E1787D441FACE581008FD5AF /* Tank War Redux-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tank War Redux-Bridging-Header.h"; sourceTree = "<group>"; };
 		E1787D451FACE582008FD5AF /* JSAnalogueStick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAnalogueStick.h; sourceTree = "<group>"; };
 		E1787D461FACE582008FD5AF /* JSAnalogueStick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAnalogueStick.m; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */,
 				E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */,
 				E1787D401FACE458008FD5AF /* BluetoothViewController.swift */,
-				E1787D421FACE4EE008FD5AF /* SubViewController.swift */,
+				E1787D421FACE4EE008FD5AF /* SingleViewController.swift */,
 				E1787D4E1FACE8D5008FD5AF /* TankWarClient.swift */,
 				E1787D301FACE3B3008FD5AF /* ViewController.swift */,
 				E1787D511FACE9AA008FD5AF /* BlueTank.swift */,
@@ -201,7 +201,7 @@
 				E1787D5B1FACE9AB008FD5AF /* Shell.swift in Sources */,
 				E1787D591FACE9AB008FD5AF /* Tank.swift in Sources */,
 				E18FB3681FAD454400EDA857 /* Extensions.swift in Sources */,
-				E1787D431FACE4EE008FD5AF /* SubViewController.swift in Sources */,
+				E1787D431FACE4EE008FD5AF /* SingleViewController.swift in Sources */,
 				E1787D4F1FACE8D5008FD5AF /* TankWarClient.swift in Sources */,
 				E1787D4A1FACE582008FD5AF /* JSAnalogueStick.m in Sources */,
 				E1787D4D1FACE79B008FD5AF /* BluetoothTankWarClient.swift in Sources */,

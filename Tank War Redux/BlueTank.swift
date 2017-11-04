@@ -25,8 +25,8 @@ class BlueTank{
     var identifier = "1"
     static let location = ["1":Location(x:0,y:0),
                            "2":Location(x:Tank.paintWidth-32,y:0),
-                           "3":Location(x:0,y:Tank.paintHeigth-32),
-                           "4":Location(x:Tank.paintWidth-32,y:Tank.paintHeigth-32)]
+                           "3":Location(x:0,y:Tank.paintHeight-32),
+                           "4":Location(x:Tank.paintWidth-32,y:Tank.paintHeight-32)]
     static let towardEnum = ["1":Toward.right,
                            "2":Toward.down,
                            "3":Toward.up,
@@ -34,10 +34,10 @@ class BlueTank{
     static let corlor = ["1":"紫","2":"绿","3":"白","4":"黄"]
     static let paintWidth:CGFloat = 414
     static let paintHeigth:CGFloat = 600
-    static let image1=UIImage(named: "p1-a-cell.png")!
-    static let image2=UIImage(named: "p1-a-cell2.png")!
-    static let image3=UIImage(named: "p1-a-cell3.png")!
-    static let image4=UIImage(named: "p1-a-cell4.png")!
+    static let image1=UIImage(named: "p1-cell1.png")!
+    static let image2=UIImage(named: "p1-cell2.png")!
+    static let image3=UIImage(named: "p1-cell3.png")!
+    static let image4=UIImage(named: "p1-cell4.png")!
     static let images=[image1,image2,image3,image4]
     static let white1=UIImage(named: "badtank1.png")!
     static let white2=UIImage(named: "badtank2.png")!
@@ -99,7 +99,7 @@ class BlueTank{
             }
         }
         else if playerTankToward == .down && isWalk==true{
-            if(self.y+Tank.speed <= Tank.paintHeigth-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),enemyTank: self.myClient.enemyTank)){
+            if(self.y+Tank.speed <= Tank.paintHeight-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),enemyTank: self.myClient.enemyTank)){
                 self.y += Tank.speed
             }
         }

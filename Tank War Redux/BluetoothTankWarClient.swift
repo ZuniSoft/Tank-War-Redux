@@ -30,6 +30,11 @@ class BluetoothTankWarClient:TankWarClient{
         viewController.fireButton.isHidden=false
         viewController.bluetoothTextView.isHidden=true
         self.viewController = viewController
+        
+        //identifier = String(viewController.session.myPeerID.hashValue)
+        
+        mytank = BlueTank(attribute: false, client: self, peerID: viewController.session.myPeerID, identifier: identifier)
+        
         let queue=DispatchQueue.global(qos: .default)
         queue.async{
             while(!self.isOver){
@@ -59,7 +64,6 @@ class BluetoothTankWarClient:TankWarClient{
                 }
             }
         }
-        
     }
     
     func upadteEnemyLocation(_ str:String){
@@ -163,7 +167,26 @@ class BluetoothTankWarClient:TankWarClient{
     }
     
     override func paint()->UIView{
-        let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeigth)/2, width: Tank.paintWidth, height: Tank.paintHeigth))
+        //let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeight)/2, width: Tank.paintWidth, height: Tank.paintHeight))
+        
+        var widthScale: CGFloat
+        var heightScale: CGFloat
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            widthScale = 0.20
+            heightScale = 0.20
+        } else {
+            widthScale = 0.09
+            heightScale = 0
+        }
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        let view=UIView(frame: CGRect(x: CGFloat(screenWidth) * widthScale, y: CGFloat(screenHeight) * heightScale, width: Tank.paintWidth, height: Tank.paintHeight))
+        
+        
         view.tag=100
         view.backgroundColor = UIColor.black
         if(mytank.isLive){
@@ -186,7 +209,8 @@ class BluetoothTankWarClient:TankWarClient{
 
         for var i in 0..<shells.count
         {
-            let m=shells[i]
+            guard let m=shells[safe: i] else { break }
+            //let m=shells[i]
             m.fly()
             m.hitEdge()
             m.hitTank(mytank)
@@ -202,7 +226,8 @@ class BluetoothTankWarClient:TankWarClient{
         
         for var i in 0..<enemyTank.count
         {
-            let badtank=enemyTank[i]
+            guard let badtank=enemyTank[safe: i] else { break }
+            //let badtank=enemyTank[i]
             if(badtank.isLive){
                 badtank.draw(view)
             }
@@ -214,7 +239,8 @@ class BluetoothTankWarClient:TankWarClient{
 
         for var i in 0..<explodes.count
         {
-            let e=explodes[i];
+            guard let e=explodes[safe: i] else { break }
+            //let e=explodes[i];
             if(e.time>0){
                 e.draw(view);
             }

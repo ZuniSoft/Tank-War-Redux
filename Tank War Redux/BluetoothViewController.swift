@@ -30,7 +30,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     @objc func buttonReleased(_ button:JSButton)
     {
         if(player.mytank.isLive){
-            player.shells.append(Shell(tank: player.mytank ,client:player,attribute:true,id:Int32(arc4random())))
+            player.shells.append(Shell(tank: player.mytank ,client:player,attribute:true,id: 1/*Int32(arc4random())*/))
         }
         //player.shells.append(Shell(tank: player.myTank,client:player,attribute:true))
     }

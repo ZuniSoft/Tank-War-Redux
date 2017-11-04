@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        let subVc=storyboard?.instantiateViewController(withIdentifier: "sub")
-            as! SubViewController
+        let subVc=storyboard?.instantiateViewController(withIdentifier: "SingleView")
+            as! SingleViewController
         subVc.modalTransitionStyle = .flipHorizontal
         self.present(subVc, animated: true, completion: nil)
     }

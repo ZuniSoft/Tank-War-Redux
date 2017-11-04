@@ -153,7 +153,7 @@ class Shell{
     }
     
     func hitEdge(){
-        if(self.x<=0||self.y<=0||self.x>=Tank.paintWidth-10||self.y>=Tank.paintHeigth-10){
+        if(self.x<=0||self.y<=0||self.x>=Tank.paintWidth-10||self.y>=Tank.paintHeight-10){
             self.isLive=false
             myClient.explodes.append(Explode(x: self.x,y: self.y))
         }

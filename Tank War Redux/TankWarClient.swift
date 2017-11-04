@@ -22,13 +22,32 @@ class TankWarClient{
         walls=Wall()
         explodes=[]
         tanks=[]
-        myTank=Tank(x: 0,y: (Tank.paintHeigth/2)-64,attribute:true,client:self,toward: .right)
+        myTank=Tank(x: 0,y: (Tank.paintHeight/2)-64,attribute:true,client:self,toward: .right)
     }
     
     func paint()->UIView{
-        let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeigth)/2, width: Tank.paintWidth, height: Tank.paintHeigth))
+        //let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeight)/2, width: Tank.paintWidth, height: Tank.paintHeight))
+        
+        var widthScale: CGFloat
+        var heightScale: CGFloat
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            widthScale = 0.20
+            heightScale = 0.20
+        } else {
+            widthScale = 0.09
+            heightScale = 0
+        }
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        let view=UIView(frame: CGRect(x: CGFloat(screenWidth) * widthScale, y: CGFloat(screenHeight) * heightScale, width: Tank.paintWidth, height: Tank.paintHeight))
+        
         view.tag=100
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor(patternImage: UIImage(named:"tile4")!)
+        
         myTank.move()
         myTank.draw(view)
         if(Tank.badTankCount<50){
@@ -43,8 +62,8 @@ class TankWarClient{
                     badTankInterval1 += 1
                 }
                 if(badTankInterval2>100){
-                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: Tank.paintHeigth-32, tanks: tanks, badi: -1)){
-                        tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeigth-32, attribute: false, client: self,toward: .up))
+                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: Tank.paintHeight-32, tanks: tanks, badi: -1)){
+                        tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeight-32, attribute: false, client: self,toward: .up))
                         badTankInterval2=0
                     }
                 }
@@ -115,6 +134,7 @@ class TankWarClient{
         t.colliedsWithTanks(tanks);
         //t.draw(g);
         }*/
+        
         return view
     }
 }

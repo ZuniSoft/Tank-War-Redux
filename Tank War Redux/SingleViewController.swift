@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-class SubViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDelegate{
+class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor=UIColor.white
-        srand48(Int(time(nil)))
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
+        
+        //srand48(Int(time(nil)))
         analogueStick.delegate=self;
         fireButton.titleLabel.text="F"
         fireButton.backgroundImage=UIImage(named: "button.png")!
@@ -21,7 +23,7 @@ class SubViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDeleg
         analogueStick.alpha=0.7
         fireButton.alpha=0.7
         player.tanks.append(Tank(x: Tank.paintWidth-32, y: 0, attribute: false, client: player,toward: .down))
-        player.tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeigth-32, attribute: false, client: player,toward: .up))
+        player.tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeight-32, attribute: false, client: player,toward: .up))
         let queue=DispatchQueue.global(qos: .default)
         queue.async{
             while(true){

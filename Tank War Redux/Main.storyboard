@@ -14,28 +14,25 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="RcQ-n1-8lr"/>
+                        <viewControllerLayoutGuide type="bottom" id="UoX-Gy-GBY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRK-Zn-YIU">
-                                <rect key="frame" x="113" y="329" width="149" height="51"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="HWz-fc-51n"/>
-                                </constraints>
+                                <rect key="frame" x="136" y="355" width="102" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Bluetooth"/>
+                                <state key="normal" title="Multi Player"/>
                                 <connections>
                                     <action selector="blueButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bzg-bk-PCy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6n-lF-kCQ">
-                                <rect key="frame" x="113" y="258" width="149" height="51"/>
+                                <rect key="frame" x="131" y="275" width="113" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Fast Game"/>
+                                <state key="normal" title="Single Player"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKu-Xh-iGz"/>
                                 </connections>
@@ -43,13 +40,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="97" id="1WS-vK-W08"/>
-                            <constraint firstItem="m6n-lF-kCQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="238" id="25e-EG-33d"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRK-Zn-YIU" secondAttribute="bottom" constant="287" id="K6k-yd-fht"/>
-                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="top" secondItem="m6n-lF-kCQ" secondAttribute="bottom" constant="20" id="Xxe-DB-IZO"/>
-                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="trailing" secondItem="m6n-lF-kCQ" secondAttribute="trailing" id="fvu-ea-uuH"/>
-                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oCR-Dh-EXN"/>
-                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="leading" secondItem="m6n-lF-kCQ" secondAttribute="leading" id="rVO-Kq-oyU"/>
+                            <constraint firstItem="m6n-lF-kCQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bn9-qA-8c9"/>
+                            <constraint firstItem="m6n-lF-kCQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40.5" id="gsX-fq-JMF"/>
+                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="top" secondItem="m6n-lF-kCQ" secondAttribute="bottom" constant="43.5" id="kyD-RK-t0Z"/>
+                            <constraint firstItem="FRK-Zn-YIU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="myw-43-nEJ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -57,37 +51,46 @@
             </objects>
             <point key="canvasLocation" x="130" y="292"/>
         </scene>
-        <!--Sub View Controller-->
+        <!--Single View Controller-->
         <scene sceneID="hql-zv-W6p">
             <objects>
-                <viewController storyboardIdentifier="sub" id="t6D-kk-ez1" customClass="SubViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SingleView" id="t6D-kk-ez1" customClass="SingleViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NOb-GH-q9A"/>
-                        <viewControllerLayoutGuide type="bottom" id="XVV-Uv-fcS"/>
+                        <viewControllerLayoutGuide type="top" id="3ih-B6-Lq2"/>
+                        <viewControllerLayoutGuide type="bottom" id="y4e-wm-jxS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QCl-Kv-IhX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utI-cG-nJI" customClass="JSAnalogueStick">
-                                <rect key="frame" x="37" y="44" width="100" height="100"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp5-dd-BQP" customClass="JSButton">
-                                <rect key="frame" x="37" y="426" width="60" height="60"/>
+                                <rect key="frame" x="299" y="587" width="60" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="KLo-d8-ago"/>
+                                    <constraint firstAttribute="width" constant="60" id="Zsi-YU-VpN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="ohX-XH-ABi"/>
+                                    <constraint firstAttribute="height" constant="60" id="u7D-s4-Ka7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utI-cG-nJI" customClass="JSAnalogueStick">
+                                <rect key="frame" x="16" y="547" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Hkq-1H-39r"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="O3T-kO-CWo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="bVl-zd-b4N"/>
+                                    <constraint firstAttribute="height" constant="100" id="wZM-Ho-5FM"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mp5-dd-BQP" firstAttribute="leading" secondItem="utI-cG-nJI" secondAttribute="leading" id="9eK-Wh-2yX"/>
-                            <constraint firstItem="mp5-dd-BQP" firstAttribute="top" secondItem="QCl-Kv-IhX" secondAttribute="top" constant="426" id="EoD-zb-17C"/>
-                            <constraint firstItem="XVV-Uv-fcS" firstAttribute="top" secondItem="mp5-dd-BQP" secondAttribute="bottom" constant="181" id="VFu-Nv-gha"/>
-                            <constraint firstAttribute="trailing" secondItem="utI-cG-nJI" secondAttribute="trailing" constant="238" id="nO5-av-B7n"/>
-                            <constraint firstItem="utI-cG-nJI" firstAttribute="top" secondItem="NOb-GH-q9A" secondAttribute="bottom" constant="24" id="obm-Fa-lYV"/>
-                            <constraint firstAttribute="trailing" secondItem="mp5-dd-BQP" secondAttribute="trailing" constant="278" id="od7-qF-Ae2"/>
-                            <constraint firstAttribute="bottom" secondItem="utI-cG-nJI" secondAttribute="bottom" constant="523" id="qqy-a8-dQw"/>
-                            <constraint firstItem="utI-cG-nJI" firstAttribute="leading" secondItem="QCl-Kv-IhX" secondAttribute="leadingMargin" constant="21" id="xDj-1R-Et6"/>
+                            <constraint firstItem="utI-cG-nJI" firstAttribute="leading" secondItem="QCl-Kv-IhX" secondAttribute="leadingMargin" id="DWy-11-t15"/>
+                            <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="mp5-dd-BQP" secondAttribute="bottom" constant="20" id="IBM-Mm-Etc"/>
+                            <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="utI-cG-nJI" secondAttribute="bottom" constant="20" id="LAc-Q2-Ww0"/>
+                            <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="utI-cG-nJI" secondAttribute="bottom" constant="20" id="Xuy-Fi-6Pe"/>
+                            <constraint firstItem="mp5-dd-BQP" firstAttribute="trailing" secondItem="QCl-Kv-IhX" secondAttribute="trailingMargin" id="llG-f5-eUa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -104,33 +107,30 @@
             <objects>
                 <viewController storyboardIdentifier="BluetoothView" id="Xql-fI-Lac" customClass="BluetoothViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MMq-9i-qbm"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ifo-WD-gEj"/>
+                        <viewControllerLayoutGuide type="top" id="VES-hq-WJs"/>
+                        <viewControllerLayoutGuide type="bottom" id="voV-YM-ZDh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Sw-9p-s2V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVB-RG-b2m" customClass="JSButton">
-                                <rect key="frame" x="46" y="430" width="60" height="60"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Bl-Hz2" customClass="JSAnalogueStick">
-                                <rect key="frame" x="34" y="86" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-Sn-HNr">
-                                <rect key="frame" x="40" y="119" width="240" height="128"/>
+                                <rect key="frame" x="67" y="133" width="240" height="116"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6M-dm-sl7">
-                                <rect key="frame" x="88" y="360" width="145" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Bl-Hz2" customClass="JSAnalogueStick">
+                                <rect key="frame" x="16" y="547" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="23Q-zm-YJf"/>
+                                    <constraint firstAttribute="height" constant="100" id="6vE-no-cFF"/>
+                                    <constraint firstAttribute="width" constant="100" id="qjA-gF-FUI"/>
                                 </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6M-dm-sl7">
+                                <rect key="frame" x="138" y="354" width="99" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
                                     <action selector="beginGame:" destination="Xql-fI-Lac" eventType="touchUpInside" id="hMC-ii-bct"/>
@@ -138,31 +138,36 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEk-il-UbK">
-                                <rect key="frame" x="130" y="283" width="61" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="HZj-ba-NzQ"/>
-                                    <constraint firstAttribute="width" constant="61" id="aB1-Df-8ke"/>
-                                </constraints>
+                                <rect key="frame" x="150" y="273" width="75" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="showBrowser:" destination="Xql-fI-Lac" eventType="touchUpInside" id="AHs-NY-lLl"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVB-RG-b2m" customClass="JSButton">
+                                <rect key="frame" x="299" y="587" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IBO-NW-kjU"/>
+                                    <constraint firstAttribute="width" constant="60" id="ihg-pP-kGm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gVB-RG-b2m" firstAttribute="top" secondItem="V6M-dm-sl7" secondAttribute="bottom" constant="40" id="Agm-0A-MKD"/>
-                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="24" id="CAP-l7-f6g"/>
-                            <constraint firstItem="V6M-dm-sl7" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="72" id="Edk-1F-YzN"/>
-                            <constraint firstItem="xEk-il-UbK" firstAttribute="top" secondItem="2Sw-9p-s2V" secondAttribute="top" constant="283" id="Kv9-2Y-ZHW"/>
-                            <constraint firstItem="gVB-RG-b2m" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="30" id="Pmf-NJ-vfj"/>
-                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="top" secondItem="MMq-9i-qbm" secondAttribute="bottom" constant="99" id="Snl-0Y-Sf8"/>
-                            <constraint firstItem="V6M-dm-sl7" firstAttribute="top" secondItem="xEk-il-UbK" secondAttribute="bottom" constant="47" id="UaY-VU-11e"/>
-                            <constraint firstAttribute="trailing" secondItem="gVB-RG-b2m" secondAttribute="trailing" constant="269" id="VYt-QJ-xos"/>
-                            <constraint firstItem="xEk-il-UbK" firstAttribute="centerX" secondItem="SVi-Sn-HNr" secondAttribute="centerX" id="ViE-2r-Ym0"/>
-                            <constraint firstItem="V6M-dm-sl7" firstAttribute="centerX" secondItem="xEk-il-UbK" secondAttribute="centerX" id="bni-BA-0mf"/>
-                            <constraint firstItem="Ifo-WD-gEj" firstAttribute="top" secondItem="gVB-RG-b2m" secondAttribute="bottom" constant="177" id="cAq-2A-TG7"/>
-                            <constraint firstItem="xEk-il-UbK" firstAttribute="top" secondItem="SVi-Sn-HNr" secondAttribute="bottom" constant="36" id="sLR-Ms-mfb"/>
+                            <constraint firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" constant="20" symbolic="YES" id="8sd-On-yHd"/>
+                            <constraint firstItem="RM0-Bl-Hz2" firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" id="A2T-9Y-P1e"/>
+                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="51" id="Cfg-ec-azp"/>
+                            <constraint firstItem="xEk-il-UbK" firstAttribute="centerY" secondItem="2Sw-9p-s2V" secondAttribute="centerY" constant="-42.5" id="QRO-zc-2jg"/>
+                            <constraint firstItem="xEk-il-UbK" firstAttribute="top" secondItem="SVi-Sn-HNr" secondAttribute="bottom" constant="24" id="Stq-66-t1U"/>
+                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="centerX" secondItem="xEk-il-UbK" secondAttribute="centerX" id="d5v-If-YEr"/>
+                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="top" secondItem="VES-hq-WJs" secondAttribute="bottom" constant="113" id="hbu-kc-ZJD"/>
+                            <constraint firstItem="V6M-dm-sl7" firstAttribute="top" secondItem="xEk-il-UbK" secondAttribute="bottom" constant="45" id="md2-Ul-rn8"/>
+                            <constraint firstItem="RM0-Bl-Hz2" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" id="oLa-mT-3Ze"/>
+                            <constraint firstItem="xEk-il-UbK" firstAttribute="centerX" secondItem="2Sw-9p-s2V" secondAttribute="centerX" id="rI2-GL-gWf"/>
+                            <constraint firstItem="gVB-RG-b2m" firstAttribute="trailing" secondItem="2Sw-9p-s2V" secondAttribute="trailingMargin" id="sVo-XN-AES"/>
+                            <constraint firstItem="V6M-dm-sl7" firstAttribute="centerX" secondItem="2Sw-9p-s2V" secondAttribute="centerX" id="u36-Pd-cuH"/>
                         </constraints>
                     </view>
                     <connections>
