@@ -9,19 +9,48 @@
 /* Begin PBXBuildFile section */
 		E1787D2F1FACE3B3008FD5AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */; };
 		E1787D311FACE3B3008FD5AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D301FACE3B3008FD5AF /* ViewController.swift */; };
-		E1787D341FACE3B3008FD5AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1787D321FACE3B3008FD5AF /* Main.storyboard */; };
 		E1787D361FACE3B3008FD5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1787D351FACE3B3008FD5AF /* Assets.xcassets */; };
 		E1787D391FACE3B3008FD5AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1787D371FACE3B3008FD5AF /* LaunchScreen.storyboard */; };
+		E1787D411FACE458008FD5AF /* BluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D401FACE458008FD5AF /* BluetoothViewController.swift */; };
+		E1787D431FACE4EE008FD5AF /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D421FACE4EE008FD5AF /* SubViewController.swift */; };
+		E1787D4A1FACE582008FD5AF /* JSAnalogueStick.m in Sources */ = {isa = PBXBuildFile; fileRef = E1787D461FACE582008FD5AF /* JSAnalogueStick.m */; };
+		E1787D4B1FACE582008FD5AF /* JSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E1787D471FACE582008FD5AF /* JSButton.m */; };
+		E1787D4D1FACE79B008FD5AF /* BluetoothTankWarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */; };
+		E1787D4F1FACE8D5008FD5AF /* TankWarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D4E1FACE8D5008FD5AF /* TankWarClient.swift */; };
+		E1787D561FACE9AB008FD5AF /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D501FACE9AA008FD5AF /* Wall.swift */; };
+		E1787D571FACE9AB008FD5AF /* BlueTank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D511FACE9AA008FD5AF /* BlueTank.swift */; };
+		E1787D581FACE9AB008FD5AF /* Explode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D521FACE9AA008FD5AF /* Explode.swift */; };
+		E1787D591FACE9AB008FD5AF /* Tank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D531FACE9AA008FD5AF /* Tank.swift */; };
+		E1787D5A1FACE9AB008FD5AF /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D541FACE9AA008FD5AF /* Others.swift */; };
+		E1787D5B1FACE9AB008FD5AF /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D551FACE9AA008FD5AF /* Shell.swift */; };
+		E1787D5E1FACFD49008FD5AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1787D5D1FACFC7C008FD5AF /* Main.storyboard */; };
+		E18FB3681FAD454400EDA857 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18FB3671FAD454400EDA857 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E1787D2B1FACE3B3008FD5AF /* Tank War Redux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tank War Redux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1787D301FACE3B3008FD5AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E1787D331FACE3B3008FD5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1787D351FACE3B3008FD5AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1787D381FACE3B3008FD5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1787D3A1FACE3B3008FD5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1787D401FACE458008FD5AF /* BluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewController.swift; sourceTree = "<group>"; };
+		E1787D421FACE4EE008FD5AF /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
+		E1787D441FACE581008FD5AF /* Tank War Redux-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tank War Redux-Bridging-Header.h"; sourceTree = "<group>"; };
+		E1787D451FACE582008FD5AF /* JSAnalogueStick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAnalogueStick.h; sourceTree = "<group>"; };
+		E1787D461FACE582008FD5AF /* JSAnalogueStick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAnalogueStick.m; sourceTree = "<group>"; };
+		E1787D471FACE582008FD5AF /* JSButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSButton.m; sourceTree = "<group>"; };
+		E1787D491FACE582008FD5AF /* JSButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSButton.h; sourceTree = "<group>"; };
+		E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothTankWarClient.swift; sourceTree = "<group>"; };
+		E1787D4E1FACE8D5008FD5AF /* TankWarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankWarClient.swift; sourceTree = "<group>"; };
+		E1787D501FACE9AA008FD5AF /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
+		E1787D511FACE9AA008FD5AF /* BlueTank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueTank.swift; sourceTree = "<group>"; };
+		E1787D521FACE9AA008FD5AF /* Explode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explode.swift; sourceTree = "<group>"; };
+		E1787D531FACE9AA008FD5AF /* Tank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tank.swift; sourceTree = "<group>"; };
+		E1787D541FACE9AA008FD5AF /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
+		E1787D551FACE9AA008FD5AF /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		E1787D5D1FACFC7C008FD5AF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E18FB3671FAD454400EDA857 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +84,27 @@
 			isa = PBXGroup;
 			children = (
 				E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */,
+				E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */,
+				E1787D401FACE458008FD5AF /* BluetoothViewController.swift */,
+				E1787D421FACE4EE008FD5AF /* SubViewController.swift */,
+				E1787D4E1FACE8D5008FD5AF /* TankWarClient.swift */,
 				E1787D301FACE3B3008FD5AF /* ViewController.swift */,
-				E1787D321FACE3B3008FD5AF /* Main.storyboard */,
+				E1787D511FACE9AA008FD5AF /* BlueTank.swift */,
+				E1787D521FACE9AA008FD5AF /* Explode.swift */,
+				E1787D551FACE9AA008FD5AF /* Shell.swift */,
+				E1787D531FACE9AA008FD5AF /* Tank.swift */,
+				E1787D501FACE9AA008FD5AF /* Wall.swift */,
+				E1787D541FACE9AA008FD5AF /* Others.swift */,
+				E18FB3671FAD454400EDA857 /* Extensions.swift */,
 				E1787D351FACE3B3008FD5AF /* Assets.xcassets */,
 				E1787D371FACE3B3008FD5AF /* LaunchScreen.storyboard */,
+				E1787D5D1FACFC7C008FD5AF /* Main.storyboard */,
 				E1787D3A1FACE3B3008FD5AF /* Info.plist */,
+				E1787D451FACE582008FD5AF /* JSAnalogueStick.h */,
+				E1787D461FACE582008FD5AF /* JSAnalogueStick.m */,
+				E1787D491FACE582008FD5AF /* JSButton.h */,
+				E1787D471FACE582008FD5AF /* JSButton.m */,
+				E1787D441FACE581008FD5AF /* Tank War Redux-Bridging-Header.h */,
 			);
 			path = "Tank War Redux";
 			sourceTree = "<group>";
@@ -96,7 +141,16 @@
 				TargetAttributes = {
 					E1787D2A1FACE3B3008FD5AF = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -123,9 +177,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1787D5E1FACFD49008FD5AF /* Main.storyboard in Resources */,
 				E1787D391FACE3B3008FD5AF /* LaunchScreen.storyboard in Resources */,
 				E1787D361FACE3B3008FD5AF /* Assets.xcassets in Resources */,
-				E1787D341FACE3B3008FD5AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,22 +190,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1787D581FACE9AB008FD5AF /* Explode.swift in Sources */,
+				E1787D411FACE458008FD5AF /* BluetoothViewController.swift in Sources */,
+				E1787D561FACE9AB008FD5AF /* Wall.swift in Sources */,
 				E1787D311FACE3B3008FD5AF /* ViewController.swift in Sources */,
+				E1787D571FACE9AB008FD5AF /* BlueTank.swift in Sources */,
+				E1787D5A1FACE9AB008FD5AF /* Others.swift in Sources */,
+				E1787D4B1FACE582008FD5AF /* JSButton.m in Sources */,
 				E1787D2F1FACE3B3008FD5AF /* AppDelegate.swift in Sources */,
+				E1787D5B1FACE9AB008FD5AF /* Shell.swift in Sources */,
+				E1787D591FACE9AB008FD5AF /* Tank.swift in Sources */,
+				E18FB3681FAD454400EDA857 /* Extensions.swift in Sources */,
+				E1787D431FACE4EE008FD5AF /* SubViewController.swift in Sources */,
+				E1787D4F1FACE8D5008FD5AF /* TankWarClient.swift in Sources */,
+				E1787D4A1FACE582008FD5AF /* JSAnalogueStick.m in Sources */,
+				E1787D4D1FACE79B008FD5AF /* BluetoothTankWarClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1787D321FACE3B3008FD5AF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1787D331FACE3B3008FD5AF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E1787D371FACE3B3008FD5AF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -214,8 +273,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tank War Redux-Bridging-Header";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -265,6 +326,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tank War Redux-Bridging-Header";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -274,12 +336,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S63L4926ND;
 				INFOPLIST_FILE = "Tank War Redux/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zunisoft.ios.Tank-War-Redux";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zunisoft.ios.tank-war-redux";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tank War Redux/Tank War Redux-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,12 +354,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S63L4926ND;
 				INFOPLIST_FILE = "Tank War Redux/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zunisoft.ios.Tank-War-Redux";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zunisoft.ios.tank-war-redux";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tank War Redux/Tank War Redux-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
