@@ -32,18 +32,20 @@ class TankWarClient{
         var heightScale: CGFloat
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            widthScale = 0.20
-            heightScale = 0.20
+            widthScale = 1.25
+            heightScale = 1.25
         } else {
-            widthScale = 0.09
-            heightScale = 0
+            widthScale = 0.75
+            heightScale = 0.75
         }
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
+    
+        let view=UIView(frame: CGRect(x: CGFloat(screenWidth - Tank.paintWidth) / 2, y: CGFloat(screenHeight - Tank.paintHeight) / 2, width: Tank.paintWidth, height: Tank.paintHeight))
         
-        let view=UIView(frame: CGRect(x: CGFloat(screenWidth) * widthScale, y: CGFloat(screenHeight) * heightScale, width: Tank.paintWidth, height: Tank.paintHeight))
+        view.transform = CGAffineTransform(scaleX: widthScale, y: heightScale)
         
         view.tag=100
         view.backgroundColor = UIColor(patternImage: UIImage(named:"tile4")!)

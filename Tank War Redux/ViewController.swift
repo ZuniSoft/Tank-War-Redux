@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor=UIColor.black
+        self.view.backgroundColor=UIColor.white
         //let deskView = UIView(frame:CGRectMake(4,10,400,308))
         //deskView.backgroundColor = UIColor(patternImage: UIImage(named:"desk.jpg")!)
         //view.addSubview(deskView)

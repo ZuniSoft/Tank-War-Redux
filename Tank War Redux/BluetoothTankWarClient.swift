@@ -24,6 +24,7 @@ class BluetoothTankWarClient:TankWarClient{
     }
     
     func beginGame(_ viewController: BluetoothViewController){
+        viewController.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
         viewController.connect.isHidden=true
         viewController.beginGame.isHidden=true
         viewController.analogueStick.isHidden=false
@@ -173,22 +174,26 @@ class BluetoothTankWarClient:TankWarClient{
         var heightScale: CGFloat
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            widthScale = 0.20
-            heightScale = 0.20
+            widthScale = 1.25
+            heightScale = 1.25
         } else {
-            widthScale = 0.09
-            heightScale = 0
+            widthScale = 0.75
+            heightScale = 0.75
         }
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
-        let view=UIView(frame: CGRect(x: CGFloat(screenWidth) * widthScale, y: CGFloat(screenHeight) * heightScale, width: Tank.paintWidth, height: Tank.paintHeight))
+        let view=UIView(frame: CGRect(x: CGFloat(screenWidth - Tank.paintWidth) / 2, y: CGFloat(screenHeight - Tank.paintHeight) / 2, width: Tank.paintWidth, height: Tank.paintHeight))
+        
+        view.transform = CGAffineTransform(scaleX: widthScale, y: heightScale)
         
         
         view.tag=100
-        view.backgroundColor = UIColor.black
+        //view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor(patternImage: UIImage(named:"tile4")!)
+
         if(mytank.isLive){
             let xx=mytank.x
             let yy=mytank.y

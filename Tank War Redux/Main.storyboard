@@ -134,7 +134,6 @@
                                 <state key="normal" title="Start Game"/>
                                 <connections>
                                     <action selector="beginGame:" destination="Xql-fI-Lac" eventType="touchUpInside" id="hMC-ii-bct"/>
-                                    <action selector="showBrowser:" destination="Xql-fI-Lac" eventType="touchUpInside" id="r2o-MM-eSI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEk-il-UbK">

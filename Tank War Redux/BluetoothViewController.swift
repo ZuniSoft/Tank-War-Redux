@@ -83,6 +83,8 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         super.viewDidLoad()
         //srand48(Int(time(nil)))
         //arc4random()
+        
+        beginGame.isEnabled = false
         analogueStick.delegate=self
         fireButton.titleLabel.text="F"
         fireButton.backgroundImage=UIImage(named: "button.png")!
@@ -125,9 +127,9 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
             // button was tapped)
         var str = ""
         for i in 0...self.session.connectedPeers.count-1{
-            str = str+self.session.connectedPeers[i].displayName + ":\t"+"\(i+1)"+BlueTank.corlor["\(i+1)"]!+"\n"
+            str = str+self.session.connectedPeers[i].displayName + ":\t"+"\(i+1)"+BlueTank.color["\(i+1)"]!+"\n"
         }
-        str = str+self.peerID.displayName+":\t"+"\(4)"+BlueTank.corlor["\(4)"]!+"\n"
+        str = str+self.peerID.displayName+":\t"+"\(4)"+BlueTank.color["\(4)"]!+"\n"
         self.bluetoothTextView.text = str
         str="textview"+str
         do{
@@ -139,8 +141,10 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         catch let error as NSError {
             print("Error sending data: \(error.localizedDescription)")
         }
+        
         self.setupTank(str)
         self.dismiss(animated: true, completion: nil)
+        self.beginGame.isEnabled = true
         
     }
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController)  {
@@ -215,7 +219,11 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     func session(_ session: MCSession, peer peerID: MCPeerID,
         didChange state: MCSessionState)  {
             // Called when a connected peer changes state (for example, goes offline)
-            
+        let sessionCount = session.connectedPeers.count
+        
+        if (sessionCount == 4){
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     /*

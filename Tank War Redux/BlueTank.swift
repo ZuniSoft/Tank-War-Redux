@@ -31,7 +31,7 @@ class BlueTank{
                            "2":Toward.down,
                            "3":Toward.up,
                            "4":Toward.left]
-    static let corlor = ["1":"紫","2":"绿","3":"白","4":"黄"]
+    static let color = ["1":"Blue","2":"Black","3":"Purple","4":"Green"]
     static let paintWidth:CGFloat = 414
     static let paintHeigth:CGFloat = 600
     static let image1=UIImage(named: "p1-cell1.png")!
@@ -39,11 +39,11 @@ class BlueTank{
     static let image3=UIImage(named: "p1-cell3.png")!
     static let image4=UIImage(named: "p1-cell4.png")!
     static let images=[image1,image2,image3,image4]
-    static let white1=UIImage(named: "badtank1.png")!
-    static let white2=UIImage(named: "badtank2.png")!
-    static let white3=UIImage(named: "badtank3.png")!
-    static let white4=UIImage(named: "badtank4.png")!
-    static let whites=[white1,white2,white3,white4]
+    static let black1=UIImage(named: "badtank1.png")!
+    static let black2=UIImage(named: "badtank2.png")!
+    static let black3=UIImage(named: "badtank3.png")!
+    static let black4=UIImage(named: "badtank4.png")!
+    static let blacks=[black1,black2,black3,black4]
     static let purple1=UIImage(named: "purple.png")!
     static let purple2=UIImage(named: "purple2.png")!
     static let purple3=UIImage(named: "purple3.png")!
@@ -54,7 +54,7 @@ class BlueTank{
     static let green3=UIImage(named: "green3.png")!
     static let green4=UIImage(named: "green4.png")!
     static let greens=[green1,green2,green3,green4]
-    static let tankViews=[images,whites,purples,greens]
+    static let tankViews=[images,blacks,purples,greens]
     static var badTankCount=0
     //static var badTank=0
 
@@ -92,7 +92,7 @@ class BlueTank{
         return true
     }
     
-    func move(){//坦克的move是否可行
+    func move(){
         if playerTankToward == .up && isWalk==true{
             if(self.y-Tank.speed >= 0 && colliedsWithWalls(self.x,y:(self.y-Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y-Tank.speed),enemyTank: self.myClient.enemyTank)){
                 self.y -= Tank.speed
