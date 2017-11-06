@@ -58,10 +58,10 @@ class BluetoothTankWarClient:TankWarClient{
                 viewController.analogueStick.isHidden=true
                 viewController.fireButton.isHidden=true
                 if(self.isYouWin){
-                    viewController.bluetoothTextView.text = "you win"
+                    viewController.bluetoothTextView.text = "You Win!"
                 }
                 else{
-                    viewController.bluetoothTextView.text = "you lose"
+                    viewController.bluetoothTextView.text = "You Lose!"
                 }
             }
         }

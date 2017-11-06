@@ -95,7 +95,11 @@ class Shell{
     }
     
     func hitTank(_ myTank:Tank){
-        
+        if(intersects(self.getRect(), r2: myTank.getRect())){
+            myClient.explodes.append(Explode(x: self.x,y: self.y))
+            self.isLive=false
+            myTank.isLive=false
+        }
     }
     
     func hitTank(_ myTank:BlueTank){

@@ -13,8 +13,7 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
-        
-        //srand48(Int(time(nil)))
+    
         analogueStick.delegate=self;
         fireButton.titleLabel.text="F"
         fireButton.backgroundImage=UIImage(named: "button.png")!
@@ -22,20 +21,50 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
         fireButton.delegate=self
         analogueStick.alpha=0.7
         fireButton.alpha=0.7
+        gameStatus.isHidden = true
         player.tanks.append(Tank(x: Tank.paintWidth-32, y: 0, attribute: false, client: player,toward: .down))
         player.tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeight-32, attribute: false, client: player,toward: .up))
+        
+        
+        var running: Bool = true
+        var view1: UIView?
+        
         let queue=DispatchQueue.global(qos: .default)
         queue.async{
-            while(true){
+            while(running){
                 DispatchQueue.main.async{
-                    let view1=self.player.paint()
-                    let view=self.view.viewWithTag(100)
-                    if(view != nil){
-                        view?.removeFromSuperview()
+                    view1=self.player.paint()
+                    
+                    if (view1 == nil) {
+                        running = false
+                    } else {
+                        running = true
+                        let view=self.view.viewWithTag(100)
+                        if(view != nil){
+                            view?.removeFromSuperview()
+                        }
+                        self.view.insertSubview(view1!, at: 0)
                     }
-                    self.view.insertSubview(view1, at: 0)
                 }
                 Thread.sleep(forTimeInterval: 0.04)
+            }
+            
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let controller = storyboard.instantiateViewController(withIdentifier: "View")
+            //let rootViewcontroller = UIApplication.shared.delegate?.window??.rootViewController
+            //rootViewcontroller?.present(controller, animated: true, completion: nil)
+            
+            // Game is over, go to pick game view controller
+            DispatchQueue.main.async() {
+                self.gameStatus.isHidden = false
+                self.gameStatus.text = "Game Over !!"
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                let view=self.storyboard?.instantiateViewController(withIdentifier: "View")
+                    as! ViewController
+                view.modalTransitionStyle = .flipHorizontal
+                self.present(view, animated: true, completion: nil)
             }
         }
         // Do any additional setup after loading the view.
@@ -44,6 +73,7 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
     var player=TankWarClient()
     @IBOutlet weak var analogueStick: JSAnalogueStick!
     @IBOutlet weak var fireButton: JSButton!
+    @IBOutlet weak var gameStatus: UILabel!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

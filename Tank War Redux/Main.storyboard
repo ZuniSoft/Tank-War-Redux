@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="View" id="BYZ-38-t0r" customClass="ViewController" customModule="Tank_War_Redux" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RcQ-n1-8lr"/>
                         <viewControllerLayoutGuide type="bottom" id="UoX-Gy-GBY"/>
@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="292"/>
+            <point key="canvasLocation" x="18" y="292"/>
         </scene>
         <!--Single View Controller-->
         <scene sceneID="hql-zv-W6p">
@@ -83,12 +83,22 @@
                                     <constraint firstAttribute="height" constant="100" id="wZM-Ho-5FM"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMk-bf-d9e" userLabel="Game Status">
+                                <rect key="frame" x="61.5" y="308.5" width="252.5" height="50.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="gameStatus"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iMk-bf-d9e" firstAttribute="centerY" secondItem="QCl-Kv-IhX" secondAttribute="centerY" id="0tK-g3-Ecw"/>
                             <constraint firstItem="utI-cG-nJI" firstAttribute="leading" secondItem="QCl-Kv-IhX" secondAttribute="leadingMargin" id="DWy-11-t15"/>
                             <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="mp5-dd-BQP" secondAttribute="bottom" constant="20" id="IBM-Mm-Etc"/>
                             <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="utI-cG-nJI" secondAttribute="bottom" constant="20" id="LAc-Q2-Ww0"/>
+                            <constraint firstItem="iMk-bf-d9e" firstAttribute="centerX" secondItem="QCl-Kv-IhX" secondAttribute="centerX" id="NPA-Po-gH4"/>
                             <constraint firstItem="y4e-wm-jxS" firstAttribute="top" secondItem="utI-cG-nJI" secondAttribute="bottom" constant="20" id="Xuy-Fi-6Pe"/>
                             <constraint firstItem="mp5-dd-BQP" firstAttribute="trailing" secondItem="QCl-Kv-IhX" secondAttribute="trailingMargin" id="llG-f5-eUa"/>
                         </constraints>
@@ -96,11 +106,12 @@
                     <connections>
                         <outlet property="analogueStick" destination="utI-cG-nJI" id="yZV-dd-RcN"/>
                         <outlet property="fireButton" destination="mp5-dd-BQP" id="fOo-Ai-g1z"/>
+                        <outlet property="gameStatus" destination="iMk-bf-d9e" id="3XL-jm-AN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wye-B3-FGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480" y="292"/>
+            <point key="canvasLocation" x="427.5" y="291.5"/>
         </scene>
         <!--Bluetooth View Controller-->
         <scene sceneID="ZIn-3j-x7Z">
@@ -115,9 +126,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-Sn-HNr">
-                                <rect key="frame" x="67" y="133" width="240" height="116"/>
+                                <rect key="frame" x="67" y="42" width="241" height="207"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Bl-Hz2" customClass="JSAnalogueStick">
@@ -155,13 +166,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="SVi-Sn-HNr" secondAttribute="trailing" constant="51" id="8RX-Qt-sQf"/>
                             <constraint firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" constant="20" symbolic="YES" id="8sd-On-yHd"/>
                             <constraint firstItem="RM0-Bl-Hz2" firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" id="A2T-9Y-P1e"/>
                             <constraint firstItem="SVi-Sn-HNr" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="51" id="Cfg-ec-azp"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="centerY" secondItem="2Sw-9p-s2V" secondAttribute="centerY" constant="-42.5" id="QRO-zc-2jg"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="top" secondItem="SVi-Sn-HNr" secondAttribute="bottom" constant="24" id="Stq-66-t1U"/>
-                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="centerX" secondItem="xEk-il-UbK" secondAttribute="centerX" id="d5v-If-YEr"/>
-                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="top" secondItem="VES-hq-WJs" secondAttribute="bottom" constant="113" id="hbu-kc-ZJD"/>
+                            <constraint firstItem="SVi-Sn-HNr" firstAttribute="top" secondItem="VES-hq-WJs" secondAttribute="bottom" constant="22" id="hbu-kc-ZJD"/>
                             <constraint firstItem="V6M-dm-sl7" firstAttribute="top" secondItem="xEk-il-UbK" secondAttribute="bottom" constant="45" id="md2-Ul-rn8"/>
                             <constraint firstItem="RM0-Bl-Hz2" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" id="oLa-mT-3Ze"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="centerX" secondItem="2Sw-9p-s2V" secondAttribute="centerX" id="rI2-GL-gWf"/>

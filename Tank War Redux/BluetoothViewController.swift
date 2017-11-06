@@ -126,12 +126,18 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
             // Called when the browser view controller is dismissed (ie the Done
             // button was tapped)
         var str = ""
+        
+        // Networked peer "clients"
         for i in 0...self.session.connectedPeers.count-1{
-            str = str+self.session.connectedPeers[i].displayName + ":\t"+"\(i+1)"+BlueTank.color["\(i+1)"]!+"\n"
+            str = str + self.session.connectedPeers[i].displayName + ":\t" + "\(i+1) -> "
+                + BlueTank.color["\(i+1)"]! + "\n"
         }
-        str = str+self.peerID.displayName+":\t"+"\(4)"+BlueTank.color["\(4)"]!+"\n"
+        // The "host" peer
+        str = str + self.peerID.displayName+":\t" + "\(4) -> " + BlueTank.color["\(4)"]! + "\n"
         self.bluetoothTextView.text = str
+        
         str="textview"+str
+        
         do{
             try self.session.send(str.data(using: String.Encoding.utf16,
                 allowLossyConversion: false)!, toPeers: self.session.connectedPeers,

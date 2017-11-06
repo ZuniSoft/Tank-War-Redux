@@ -48,7 +48,7 @@ class Tank{
     }
     
     func colliedsWithTanks(_ x:CGFloat,y:CGFloat,tanks:[Tank]) -> Bool {
-        for i in 0 ... tanks.count-1{
+        for i in 0..<tanks.count{
             if(intersects(getRect(x,y: y), r2: tanks[i].getRect())){
                 return false
             }
@@ -60,7 +60,7 @@ class Tank{
         if(intersects(getRect(x,y: y), r2: myClient.myTank.getRect())){
             return false
         }
-        for i in 0 ... tanks.count-1{
+        for i in 0..<tanks.count{
             if((badi != i )&&intersects(getRect(x,y: y), r2: tanks[i].getRect())){
                 return false
             }
@@ -69,7 +69,7 @@ class Tank{
     }
     
     func colliedsWithWalls(_ x:CGFloat,y:CGFloat,walls:Wall) -> Bool {
-        for i in 0 ... walls.ws.count-1{
+        for i in 0..<walls.ws.count{
             if(intersects(getRect(x,y: y), r2: walls.ws[i])){
                 return false
             }
