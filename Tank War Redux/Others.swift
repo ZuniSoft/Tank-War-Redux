@@ -40,7 +40,7 @@ func intersects(_ r1:Rectangle,r2:Rectangle)->Bool{
     return CrossLine(r1.x, right: r1w, y: r1.y, top: r2.y, bottom: r2h, x: r2.x)||CrossLine(r1.x, right: r1w, y: r1.y, top: r2.y, bottom: r2h, x: r2w)||CrossLine(r1.x, right: r1w, y: r1h, top: r2.y, bottom: r2h, x: r2.x)||CrossLine(r1.x, right: r1w, y: r1h, top: r2.y, bottom: r2h, x: r2w)||CrossLine(r2.x, right: r2w, y: r2.y, top: r1.y, bottom: r1h, x: r1.x)||CrossLine(r2.x, right: r2w, y: r2.y, top: r1.y, bottom: r1h, x: r1w)||CrossLine(r2.x, right: r2w, y: r2h, top: r1.y, bottom: r1h, x: r1.x)||CrossLine(r2.x, right: r2w, y: r2h, top: r1.y, bottom: r1h, x: r1w);
 }
 
-func absolute(_ x:CGFloat)->CGFloat{//取绝对值
+func absolute(_ x:CGFloat)->CGFloat{
     if(x>=0){
         return x;
     }

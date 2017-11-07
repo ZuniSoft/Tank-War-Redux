@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDelegate{
+
+    static var isOver: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +28,7 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
         player.tanks.append(Tank(x: Tank.paintWidth-32, y: 0, attribute: false, client: player,toward: .down))
         player.tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeight-32, attribute: false, client: player,toward: .up))
         
-        
+        SingleViewController.isOver = false
         var running: Bool = true
         var view1: UIView?
         
@@ -35,16 +38,15 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
                 DispatchQueue.main.async{
                     view1=self.player.paint()
                     
-                    if (view1 == nil) {
+                    if (SingleViewController.isOver == true) {
                         running = false
-                    } else {
-                        running = true
-                        let view=self.view.viewWithTag(100)
-                        if(view != nil){
-                            view?.removeFromSuperview()
-                        }
-                        self.view.insertSubview(view1!, at: 0)
                     }
+                    
+                    let view=self.view.viewWithTag(100)
+                    if(view != nil){
+                        view?.removeFromSuperview()
+                    }
+                    self.view.insertSubview(view1!, at: 0)
                 }
                 Thread.sleep(forTimeInterval: 0.04)
             }

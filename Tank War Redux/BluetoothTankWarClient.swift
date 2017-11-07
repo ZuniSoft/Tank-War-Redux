@@ -36,11 +36,18 @@ class BluetoothTankWarClient:TankWarClient{
         
         mytank = BlueTank(attribute: false, client: self, peerID: viewController.session.myPeerID, identifier: identifier)
         
+        var running: Bool = true
+        
         let queue=DispatchQueue.global(qos: .default)
         queue.async{
-            while(!self.isOver){
+            while(running){
                 DispatchQueue.main.async{
                     let view1=viewController.player.paint()
+                    
+                    if (self.isOver == true) {
+                        running = false
+                    }
+                    
                     let view=viewController.view.viewWithTag(100)
                     if(view != nil){
                         view?.removeFromSuperview()
@@ -49,25 +56,37 @@ class BluetoothTankWarClient:TankWarClient{
                 }
                 Thread.sleep(forTimeInterval: 0.06)
             }
+            
             DispatchQueue.main.async{
                 let view=viewController.view.viewWithTag(100)
                 if(view != nil){
                     view?.removeFromSuperview()
                 }
-                viewController.bluetoothTextView.isHidden=false
+                
+                viewController.view.backgroundColor = UIColor.white
+                
+                //viewController.bluetoothTextView.isHidden=false
                 viewController.analogueStick.isHidden=true
                 viewController.fireButton.isHidden=true
+                viewController.gameStatus.isHidden = false
                 if(self.isYouWin){
-                    viewController.bluetoothTextView.text = "You Win!"
+                    viewController.gameStatus.text = "You Win !!"
                 }
                 else{
-                    viewController.bluetoothTextView.text = "You Lose!"
+                    viewController.gameStatus.text = "You Lose !!"
                 }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                let view=viewController.storyboard?.instantiateViewController(withIdentifier: "View")
+                    as! ViewController
+                view.modalTransitionStyle = .flipHorizontal
+                viewController.present(view, animated: true, completion: nil)
             }
         }
     }
     
-    func upadteEnemyLocation(_ str:String){
+    func updateEnemyLocation(_ str:String){
         print(str)
         for i in 0 ... enemyTank.count-1{
             if(str.contains(enemyTank[i].peerID.displayName)){
@@ -100,7 +119,7 @@ class BluetoothTankWarClient:TankWarClient{
         }
     }
     
-    func upadteShell(_ str:String){
+    func updateShell(_ str:String){
         print(str)
         var range1 = (str as NSString).range(of: "x:")
         var range2 = (str as NSString).range(of: "y:")
@@ -136,7 +155,7 @@ class BluetoothTankWarClient:TankWarClient{
         shells.append(Shell(x:shellX,y:shellY,toward:shellToward,client:self,attribute:true,id:id))
     }
     
-    func upadteExplode(_ str:String){
+    func updateExplode(_ str:String){
         print(str)
         var range1 = (str as NSString).range(of: "explode")
         let range2 = (str as NSString).range(of: "shellIdentifier:")
@@ -212,7 +231,7 @@ class BluetoothTankWarClient:TankWarClient{
             mytank.draw(view)
         }
 
-        for var i in 0..<shells.count
+        for i in 0..<shells.count
         {
             guard let m=shells[safe: i] else { break }
             //let m=shells[i]
@@ -222,14 +241,14 @@ class BluetoothTankWarClient:TankWarClient{
             m.hitWall(walls)
             if(!m.isLive){
                 shells.remove(at: i)
-                i = i - 1
+                //i = i - 1
             }
             else{
                 m.draw(view)
             }
         }
         
-        for var i in 0..<enemyTank.count
+        for i in 0..<enemyTank.count
         {
             guard let badtank=enemyTank[safe: i] else { break }
             //let badtank=enemyTank[i]
@@ -238,11 +257,11 @@ class BluetoothTankWarClient:TankWarClient{
             }
             else{
                 enemyTank.remove(at: i)
-                i = i - 1
+                //i = i - 1
             }
         }
 
-        for var i in 0..<explodes.count
+        for i in 0..<explodes.count
         {
             guard let e=explodes[safe: i] else { break }
             //let e=explodes[i];
@@ -251,7 +270,7 @@ class BluetoothTankWarClient:TankWarClient{
             }
             else{
                 explodes.remove(at: i)
-                i = i - 1
+                //i = i - 1
             }
         }
         if((enemyTank.count==0)||(mytank.isLive==false&&enemyTank.count==1)){

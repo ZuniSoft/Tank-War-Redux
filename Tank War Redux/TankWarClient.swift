@@ -54,9 +54,9 @@ class TankWarClient{
         myTank.move()
         myTank.draw(view!)
         
-        if(Tank.badTankCount < 3 ){ // 50
-            if(tanks.count > 1){ //35
-                if(badTankInterval1>100){
+        if(Tank.badTankCount < 50 ){
+            if(tanks.count < 35){
+                if(badTankInterval1 > 100){
                     if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: 0, tanks: tanks, badi: -1)){
                         tanks.append(Tank(x: Tank.paintWidth-32, y: 0, attribute: false, client: self,toward: .down))
                         badTankInterval1=0
@@ -82,12 +82,9 @@ class TankWarClient{
             guard let m=shells[safe: i] else { break }
             m.fly()
             m.hitEdge()
+            m.hitTank(myTank)
             m.hitTanks(tanks)
             m.hitWall(walls)
-            
-            
-            m.hitTank(myTank)
-            
             
             if(!m.isLive){
                 shells.remove(at: i)
@@ -147,10 +144,11 @@ class TankWarClient{
         
         // Game over, no more tanks to kill
         if((tanks.count == 0) || (myTank.isLive == false && tanks.count >= 1)){
-            view = nil
-            return view
-        } else {
-            return view!
+            //view = nil
+            //return view!
+            SingleViewController.isOver = true
         }
+            return view!
+        
     }
 }

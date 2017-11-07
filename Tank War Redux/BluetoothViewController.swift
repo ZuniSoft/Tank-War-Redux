@@ -59,6 +59,8 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
 
         
     }
+    
+    @IBOutlet weak var gameStatus: UILabel!
     @IBOutlet weak var bluetoothTextView: UITextView!
     @IBOutlet weak var connect: UIButton!
     @IBOutlet weak var beginGame: UIButton!
@@ -94,6 +96,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         fireButton.alpha=0.7
         analogueStick.isHidden=true
         fireButton.isHidden=true
+        gameStatus.isHidden = true
         self.peerID = MCPeerID(displayName: UIDevice.current.name)
         self.session = MCSession(peer: peerID)
         self.session.delegate = self
@@ -173,13 +176,13 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
                     self.player.beginGame(self)
                 }
                 else if(msg.contains("location")){
-                    self.player.upadteEnemyLocation(msg)
+                    self.player.updateEnemyLocation(msg)
                 }
                 else if(msg.contains("sendShell")){
-                    self.player.upadteShell(msg)
+                    self.player.updateShell(msg)
                 }
                 else if(msg.contains("explode")){
-                    self.player.upadteExplode(msg)
+                    self.player.updateExplode(msg)
                 }
             }
     }

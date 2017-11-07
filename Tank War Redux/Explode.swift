@@ -12,7 +12,9 @@ class Explode{
     var x:CGFloat
     var y:CGFloat
     var time:Int
-    static let image=UIImage(named: "boom.png")!
+    static let image1=UIImage(named: "explode1.png")!
+    static let image2=UIImage(named: "explode2.png")!
+    static let image3=UIImage(named: "explode3.png")!
 
     init(x:CGFloat,y:CGFloat){
         self.x=x-5
@@ -21,8 +23,18 @@ class Explode{
     }
     
     func draw(_ view:UIView){
-        let explode=UIImageView(image: Explode.image)
-        explode.frame = CGRect(x: x, y: y, width: 10, height: 10)
+        var explode=UIImageView(image: Explode.image1)
+        explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
+        time-=1
+        view.addSubview(explode)
+        
+        explode=UIImageView(image: Explode.image2)
+        explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
+        time-=1
+        view.addSubview(explode)
+        
+        explode=UIImageView(image: Explode.image3)
+        explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
         time-=1
         view.addSubview(explode)
     }
