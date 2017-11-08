@@ -64,9 +64,18 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     @IBOutlet weak var bluetoothTextView: UITextView!
     @IBOutlet weak var connect: UIButton!
     @IBOutlet weak var beginGame: UIButton!
+    
     @IBAction func showBrowser(_ sender: UIButton) {
+        self.browser.maximumNumberOfPeers = 4
+        self.browser.minimumNumberOfPeers = 2
+        
+        //for i in 0..<self.browser.session.connectedPeers.count {
+        //    self.browser.session.cancelConnectPeer(self.browser.session.connectedPeers[i])
+        //}
+        
         self.present(self.browser, animated: true, completion: nil)
     }
+    
     @IBAction func beginGame(_ sender: UIButton) {
         player.beginGame(self)
         do{
@@ -97,14 +106,16 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         analogueStick.isHidden=true
         fireButton.isHidden=true
         gameStatus.isHidden = true
-        self.peerID = MCPeerID(displayName: UIDevice.current.name)
+        
+        //self.peerID = MCPeerID(displayName: UIDevice.current.name)
+        self.peerID = MCPeerID.reusableInstance(withDisplayName: UIDevice.current.name)
+        
         self.session = MCSession(peer: peerID)
         self.session.delegate = self
         
         // create the browser viewcontroller with a unique service name
         self.browser = MCBrowserViewController(serviceType:serviceType,
-            session:self.session)
-        
+            session: self.session)
         self.browser.delegate = self;
         
         self.assistant = MCAdvertiserAssistant(serviceType:serviceType,
@@ -153,6 +164,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         
         self.setupTank(str)
         self.dismiss(animated: true, completion: nil)
+        
         self.beginGame.isEnabled = true
         
     }
@@ -228,13 +240,8 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     func session(_ session: MCSession, peer peerID: MCPeerID,
         didChange state: MCSessionState)  {
             // Called when a connected peer changes state (for example, goes offline)
-        let sessionCount = session.connectedPeers.count
-        
-        if (sessionCount == 4){
-            self.dismiss(animated: true, completion: nil)
-        }
     }
-
+    
     /*
     // MARK: - Navigation
 

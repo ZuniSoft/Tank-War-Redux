@@ -23,6 +23,8 @@ class Explode{
     }
     
     func draw(_ view:UIView){
+        Sound.play(file: "explosion.wav")
+        
         var explode=UIImageView(image: Explode.image1)
         explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
         time-=1

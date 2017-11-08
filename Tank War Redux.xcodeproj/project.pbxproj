@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E166DA7A1FB369B300ED88FA /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = E166DA791FB366E400ED88FA /* explosion.wav */; };
+		E166DA7C1FB36FE400ED88FA /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166DA7B1FB36FE400ED88FA /* Sound.swift */; };
+		E166DA801FB3778E00ED88FA /* tank.wav in Resources */ = {isa = PBXBuildFile; fileRef = E166DA7F1FB3774100ED88FA /* tank.wav */; };
 		E1787D2F1FACE3B3008FD5AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */; };
 		E1787D311FACE3B3008FD5AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1787D301FACE3B3008FD5AF /* ViewController.swift */; };
 		E1787D361FACE3B3008FD5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1787D351FACE3B3008FD5AF /* Assets.xcassets */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E166DA791FB366E400ED88FA /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		E166DA7B1FB36FE400ED88FA /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		E166DA7F1FB3774100ED88FA /* tank.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tank.wav; path = ../../../../Desktop/tank.wav; sourceTree = "<group>"; };
 		E1787D2B1FACE3B3008FD5AF /* Tank War Redux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tank War Redux.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1787D301FACE3B3008FD5AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E166DA781FB3666900ED88FA /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E166DA7F1FB3774100ED88FA /* tank.wav */,
+				E166DA791FB366E400ED88FA /* explosion.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		E1787D221FACE3B3008FD5AF = {
 			isa = PBXGroup;
 			children = (
@@ -84,14 +99,15 @@
 			isa = PBXGroup;
 			children = (
 				E1787D2E1FACE3B3008FD5AF /* AppDelegate.swift */,
+				E1787D511FACE9AA008FD5AF /* BlueTank.swift */,
 				E1787D4C1FACE79B008FD5AF /* BluetoothTankWarClient.swift */,
 				E1787D401FACE458008FD5AF /* BluetoothViewController.swift */,
 				E1787D421FACE4EE008FD5AF /* SingleViewController.swift */,
 				E1787D4E1FACE8D5008FD5AF /* TankWarClient.swift */,
 				E1787D301FACE3B3008FD5AF /* ViewController.swift */,
-				E1787D511FACE9AA008FD5AF /* BlueTank.swift */,
 				E1787D521FACE9AA008FD5AF /* Explode.swift */,
 				E1787D551FACE9AA008FD5AF /* Shell.swift */,
+				E166DA7B1FB36FE400ED88FA /* Sound.swift */,
 				E1787D531FACE9AA008FD5AF /* Tank.swift */,
 				E1787D501FACE9AA008FD5AF /* Wall.swift */,
 				E1787D541FACE9AA008FD5AF /* Others.swift */,
@@ -99,12 +115,13 @@
 				E1787D351FACE3B3008FD5AF /* Assets.xcassets */,
 				E1787D371FACE3B3008FD5AF /* LaunchScreen.storyboard */,
 				E1787D5D1FACFC7C008FD5AF /* Main.storyboard */,
-				E1787D3A1FACE3B3008FD5AF /* Info.plist */,
+				E166DA781FB3666900ED88FA /* Sounds */,
 				E1787D451FACE582008FD5AF /* JSAnalogueStick.h */,
 				E1787D461FACE582008FD5AF /* JSAnalogueStick.m */,
 				E1787D491FACE582008FD5AF /* JSButton.h */,
 				E1787D471FACE582008FD5AF /* JSButton.m */,
 				E1787D441FACE581008FD5AF /* Tank War Redux-Bridging-Header.h */,
+				E1787D3A1FACE3B3008FD5AF /* Info.plist */,
 			);
 			path = "Tank War Redux";
 			sourceTree = "<group>";
@@ -177,8 +194,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E166DA801FB3778E00ED88FA /* tank.wav in Resources */,
 				E1787D5E1FACFD49008FD5AF /* Main.storyboard in Resources */,
 				E1787D391FACE3B3008FD5AF /* LaunchScreen.storyboard in Resources */,
+				E166DA7A1FB369B300ED88FA /* explosion.wav in Resources */,
 				E1787D361FACE3B3008FD5AF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +224,7 @@
 				E1787D4F1FACE8D5008FD5AF /* TankWarClient.swift in Sources */,
 				E1787D4A1FACE582008FD5AF /* JSAnalogueStick.m in Sources */,
 				E1787D4D1FACE79B008FD5AF /* BluetoothTankWarClient.swift in Sources */,
+				E166DA7C1FB36FE400ED88FA /* Sound.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,8 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Sound.play(file: "tank", fileExtension: "wav", numberOfLoops: -1)
+        
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
     
         analogueStick.delegate=self;
@@ -60,6 +62,7 @@ class SingleViewController: UIViewController,JSButtonDelegate, JSAnalogueStickDe
             DispatchQueue.main.async() {
                 self.gameStatus.isHidden = false
                 self.gameStatus.text = "Game Over !!"
+                Sound.stopAll()
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3){

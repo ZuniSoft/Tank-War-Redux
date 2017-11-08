@@ -24,6 +24,8 @@ class BluetoothTankWarClient:TankWarClient{
     }
     
     func beginGame(_ viewController: BluetoothViewController){
+        Sound.play(file: "tank", fileExtension: "wav", numberOfLoops: -1)
+        
         viewController.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
         viewController.connect.isHidden=true
         viewController.beginGame.isHidden=true
@@ -58,6 +60,8 @@ class BluetoothTankWarClient:TankWarClient{
             }
             
             DispatchQueue.main.async{
+                Sound.stopAll()
+                
                 let view=viewController.view.viewWithTag(100)
                 if(view != nil){
                     view?.removeFromSuperview()
@@ -65,10 +69,10 @@ class BluetoothTankWarClient:TankWarClient{
                 
                 viewController.view.backgroundColor = UIColor.white
                 
-                //viewController.bluetoothTextView.isHidden=false
                 viewController.analogueStick.isHidden=true
                 viewController.fireButton.isHidden=true
                 viewController.gameStatus.isHidden = false
+                
                 if(self.isYouWin){
                     viewController.gameStatus.text = "You Win !!"
                 }
@@ -78,9 +82,12 @@ class BluetoothTankWarClient:TankWarClient{
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                viewController.assistant.stop()
+                
                 let view=viewController.storyboard?.instantiateViewController(withIdentifier: "View")
                     as! ViewController
                 view.modalTransitionStyle = .flipHorizontal
+            
                 viewController.present(view, animated: true, completion: nil)
             }
         }
@@ -167,8 +174,10 @@ class BluetoothTankWarClient:TankWarClient{
         index1 = range1.location+range1.length
         let shellID = (str as NSString).substring(from: index1)
         let id = (shellID as NSString).intValue
-        for i in 0...shells.count-1{
-            let m = shells[i]
+        
+        for i in 0..<shells.count{
+            //let m = shells[i]
+            guard let m=shells[safe: i] else { break }
             print(m.shellID)
             if(id==m.shellID){
                 explodes.append(Explode(x:m.x,y:m.y))
@@ -176,8 +185,10 @@ class BluetoothTankWarClient:TankWarClient{
                 break
             }
         }
-        for i in 0 ... enemyTank.count-1{
-            let t = enemyTank[i]
+        
+        for i in 0..<enemyTank.count{
+            //let t = enemyTank[i]
+            guard let t=enemyTank[safe: i] else { break }
             if(peerIDName == t.peerID.displayName){
                 t.isLive = false
                 break
