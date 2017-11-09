@@ -16,7 +16,6 @@ class BluetoothTankWarClient:TankWarClient{
     var identifier = "1"
     var enemyTank:[BlueTank]!
     var viewController: BluetoothViewController!
-    var lock = NSLock()
     
     override init(){
         super.init()
@@ -29,6 +28,7 @@ class BluetoothTankWarClient:TankWarClient{
         viewController.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
         viewController.connect.isHidden=true
         viewController.beginGame.isHidden=true
+        viewController.mainMenu.isHidden = true
         viewController.analogueStick.isHidden=false
         viewController.fireButton.isHidden=false
         viewController.bluetoothTextView.isHidden=true
@@ -66,8 +66,6 @@ class BluetoothTankWarClient:TankWarClient{
                 if(view != nil){
                     view?.removeFromSuperview()
                 }
-                
-                viewController.view.backgroundColor = UIColor.white
                 
                 viewController.analogueStick.isHidden=true
                 viewController.fireButton.isHidden=true

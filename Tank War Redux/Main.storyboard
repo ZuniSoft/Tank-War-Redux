@@ -128,7 +128,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-Sn-HNr">
                                 <rect key="frame" x="67" y="42" width="241" height="207"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Bl-Hz2" customClass="JSAnalogueStick">
@@ -170,10 +170,19 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1u-kn-jZ9">
+                                <rect key="frame" x="16" y="623" width="97" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Main Menu"/>
+                                <connections>
+                                    <action selector="mainMenu:" destination="Xql-fI-Lac" eventType="touchUpInside" id="wOK-h0-xyi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8ZN-yS-yaM" firstAttribute="centerY" secondItem="2Sw-9p-s2V" secondAttribute="centerY" id="3Cs-qN-H7s"/>
+                            <constraint firstItem="voV-YM-ZDh" firstAttribute="top" secondItem="n1u-kn-jZ9" secondAttribute="bottom" constant="8" id="6Tr-Tl-TK4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SVi-Sn-HNr" secondAttribute="trailing" constant="51" id="8RX-Qt-sQf"/>
                             <constraint firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" constant="20" symbolic="YES" id="8sd-On-yHd"/>
                             <constraint firstItem="RM0-Bl-Hz2" firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" id="A2T-9Y-P1e"/>
@@ -185,6 +194,7 @@
                             <constraint firstItem="V6M-dm-sl7" firstAttribute="top" secondItem="xEk-il-UbK" secondAttribute="bottom" constant="45" id="md2-Ul-rn8"/>
                             <constraint firstItem="RM0-Bl-Hz2" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" id="oLa-mT-3Ze"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="centerX" secondItem="2Sw-9p-s2V" secondAttribute="centerX" id="rI2-GL-gWf"/>
+                            <constraint firstItem="n1u-kn-jZ9" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" id="s0d-Lv-lbu"/>
                             <constraint firstItem="gVB-RG-b2m" firstAttribute="trailing" secondItem="2Sw-9p-s2V" secondAttribute="trailingMargin" id="sVo-XN-AES"/>
                             <constraint firstItem="V6M-dm-sl7" firstAttribute="centerX" secondItem="2Sw-9p-s2V" secondAttribute="centerX" id="u36-Pd-cuH"/>
                         </constraints>
@@ -196,6 +206,7 @@
                         <outlet property="connect" destination="xEk-il-UbK" id="PvB-Ui-FNy"/>
                         <outlet property="fireButton" destination="gVB-RG-b2m" id="iWc-oI-tPe"/>
                         <outlet property="gameStatus" destination="8ZN-yS-yaM" id="Yh5-t1-BEz"/>
+                        <outlet property="mainMenu" destination="n1u-kn-jZ9" id="793-Wo-syZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAy-WY-9ab" userLabel="First Responder" sceneMemberID="firstResponder"/>

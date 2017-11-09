@@ -14,7 +14,6 @@ class BlueTank{
     var y:CGFloat
     var playerTankToward:Toward
     var myClient:BluetoothTankWarClient
-    static let speed:CGFloat = 4
     var isWalk=false
     var isLive=true
     var isGood:Bool
@@ -23,15 +22,19 @@ class BlueTank{
     var walkTime:Int = 0
     var peerID: MCPeerID
     var identifier = "1"
+    
     static let location = ["1":Location(x:0,y:0),
                            "2":Location(x:Tank.paintWidth-32,y:0),
                            "3":Location(x:0,y:Tank.paintHeight-32),
                            "4":Location(x:Tank.paintWidth-32,y:Tank.paintHeight-32)]
+    
     static let towardEnum = ["1":Toward.right,
                            "2":Toward.down,
                            "3":Toward.up,
                            "4":Toward.left]
+    
     static let color = ["1":"Blue","2":"Black","3":"Purple","4":"Green"]
+    static let speed:CGFloat = 4
     static let paintWidth:CGFloat = 414
     static let paintHeigth:CGFloat = 600
     static let image1=UIImage(named: "p1-cell1.png")!
@@ -56,7 +59,6 @@ class BlueTank{
     static let greens=[green1,green2,green3,green4]
     static let tankViews=[images,blacks,purples,greens]
     static var badTankCount=0
-    //static var badTank=0
 
     init(attribute:Bool,client:BluetoothTankWarClient,peerID:MCPeerID,identifier:String) {
         self.peerID=peerID
@@ -64,15 +66,18 @@ class BlueTank{
         self.myClient=client
         self.x = BlueTank.location[identifier]!.x
         self.y = BlueTank.location[identifier]!.y
+        
         isGood=attribute
+        
         playerTankToward = BlueTank.towardEnum[identifier]!
+        
         tankview=UIView(frame: CGRect(x: x, y: y, width: 32, height: 32))
         tankview.backgroundColor=UIColor(patternImage: UIImage(named: "p1-cell1.png")!)
     }
     
     func colliedsWithTanks(_ x:CGFloat,y:CGFloat,enemyTank:[BlueTank]) -> Bool {
-        for i in 0 ... enemyTank.count-1{
-            if(intersects(getRect(x,y: y), r2: enemyTank[i].getRect())){
+        for i in 0 ... enemyTank.count-1 {
+            if(intersects(getRect(x,y: y), r2: enemyTank[i].getRect())) {
                 return false
             }
         }
@@ -80,60 +85,57 @@ class BlueTank{
     }
     
     func colliedsWithWalls(_ x:CGFloat,y:CGFloat,walls:Wall) -> Bool {
-        for i in 0 ... walls.ws.count-1{
-            if(intersects(getRect(x,y: y), r2: walls.ws[i])){
+        for i in 0 ... walls.ws.count-1 {
+            if(intersects(getRect(x,y: y), r2: walls.ws[i])) {
                 return false
             }
         }
         return true
     }
     
-    func colliedsWithBornArea(_ x:CGFloat,y:CGFloat)->Bool{
+    func colliedsWithBornArea(_ x:CGFloat,y:CGFloat)->Bool {
         return true
     }
     
-    func move(){
-        if playerTankToward == .up && isWalk==true{
-            if(self.y-Tank.speed >= 0 && colliedsWithWalls(self.x,y:(self.y-Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y-Tank.speed),enemyTank: self.myClient.enemyTank)){
+    func move() {
+        if playerTankToward == .up && isWalk==true {
+            if(self.y-Tank.speed >= 0 && colliedsWithWalls(self.x,y:(self.y-Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y-Tank.speed),enemyTank: self.myClient.enemyTank)) {
                 self.y -= Tank.speed
             }
-        }
-        else if playerTankToward == .down && isWalk==true{
-            if(self.y+Tank.speed <= Tank.paintHeight-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),enemyTank: self.myClient.enemyTank)){
+        } else if playerTankToward == .down && isWalk==true {
+            if(self.y+Tank.speed <= Tank.paintHeight-32 && colliedsWithWalls(self.x,y:(self.y+Tank.speed),walls:self.myClient.walls) && colliedsWithTanks(self.x,y:(self.y+Tank.speed),enemyTank: self.myClient.enemyTank)) {
                 self.y += Tank.speed
             }
-        }
-        else if playerTankToward == .left && isWalk==true{
-            if(self.x-Tank.speed >= 0 && colliedsWithWalls(self.x-Tank.speed,y:self.y,walls:self.myClient.walls) && colliedsWithTanks(self.x-Tank.speed,y:self.y,enemyTank: self.myClient.enemyTank)){
+        } else if playerTankToward == .left && isWalk==true {
+            if(self.x-Tank.speed >= 0 && colliedsWithWalls(self.x-Tank.speed,y:self.y,walls:self.myClient.walls) && colliedsWithTanks(self.x-Tank.speed,y:self.y,enemyTank: self.myClient.enemyTank)) {
                 self.x -= Tank.speed
             }
-        }
-        else if playerTankToward == .right && isWalk==true{
-            if(self.x+Tank.speed <= Tank.paintWidth-32 && colliedsWithWalls(self.x+Tank.speed,y:self.y,walls:self.myClient.walls) && colliedsWithTanks(self.x+Tank.speed,y:self.y,enemyTank: self.myClient.enemyTank)){
+        } else if playerTankToward == .right && isWalk==true {
+            if(self.x+Tank.speed <= Tank.paintWidth-32 && colliedsWithWalls(self.x+Tank.speed,y:self.y,walls:self.myClient.walls) && colliedsWithTanks(self.x+Tank.speed,y:self.y,enemyTank: self.myClient.enemyTank)) {
                 self.x += Tank.speed
             }
         }
     }
     
-    func colliedsWithTanks(_ tanks:[Tank]){
-        
+    func colliedsWithTanks(_ tanks:[Tank]) {
     }
     
-    func colliedsWithWalls(_ walls:[Wall]){
+    func colliedsWithWalls(_ walls:[Wall]) {
     }
     
-    func getRect(_ x:CGFloat,y:CGFloat)->Rectangle{
+    func getRect(_ x:CGFloat,y:CGFloat)->Rectangle {
         return Rectangle(x: x,y: y,w: 32,h: 32)
     }
     
-    func getRect()->Rectangle{
+    func getRect()->Rectangle {
         return Rectangle(x: x,y: y,w: 32,h: 32)
     }
     
-    func draw(_ view:UIView){
+    func draw(_ view:UIView) {
         var tank:UIImageView
         var intToward:Int
-        switch playerTankToward{
+        
+        switch playerTankToward {
             case .up:
                 intToward=0
             case .down:
@@ -143,8 +145,10 @@ class BlueTank{
             case .right:
                 intToward=3
         }
+        
         tank=UIImageView(image: BlueTank.tankViews[(identifier as NSString).integerValue-1][intToward])
         tank.frame = CGRect(x: x, y: y, width: 32, height: 32)
+        
         view.addSubview(tank)
     }
 }

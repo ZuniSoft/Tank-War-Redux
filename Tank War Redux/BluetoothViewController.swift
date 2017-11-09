@@ -64,6 +64,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     @IBOutlet weak var bluetoothTextView: UITextView!
     @IBOutlet weak var connect: UIButton!
     @IBOutlet weak var beginGame: UIButton!
+    @IBOutlet weak var mainMenu: UIButton!
     
     @IBAction func showBrowser(_ sender: UIButton) {
         self.browser.maximumNumberOfPeers = 4
@@ -90,11 +91,23 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
 
         
     }
+    
+    @IBAction func mainMenu(_ sender: UIButton) {
+        self.assistant.stop()
+        
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "View")
+            as! ViewController
+        view.modalTransitionStyle = .flipHorizontal
+        
+        self.present(view, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //srand48(Int(time(nil)))
         //arc4random()
         
+    
         beginGame.isEnabled = false
         analogueStick.delegate=self
         fireButton.titleLabel.text="F"
@@ -106,6 +119,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         analogueStick.isHidden=true
         fireButton.isHidden=true
         gameStatus.isHidden = true
+        
         
         //self.peerID = MCPeerID(displayName: UIDevice.current.name)
         self.peerID = MCPeerID.reusableInstance(withDisplayName: UIDevice.current.name)
