@@ -14,15 +14,15 @@ class BluetoothTankWarClient:TankWarClient{
     var isOver = false
     var isYouWin = true
     var identifier = "1"
-    var enemyTank:[BlueTank]!
+    var enemyTank: [BlueTank]!
     var viewController: BluetoothViewController!
     
-    override init(){
+    override init() {
         super.init()
-        enemyTank=[]
+        enemyTank = []
     }
     
-    func beginGame(_ viewController: BluetoothViewController){
+    func beginGame(_ viewController: BluetoothViewController) {
         Sound.play(file: "tank", fileExtension: "wav", numberOfLoops: -1)
         
         viewController.view.backgroundColor = UIColor(patternImage: UIImage(named:"tile5")!)
@@ -32,18 +32,17 @@ class BluetoothTankWarClient:TankWarClient{
         viewController.analogueStick.isHidden=false
         viewController.fireButton.isHidden=false
         viewController.bluetoothTextView.isHidden=true
-        self.viewController = viewController
         
-        //identifier = String(viewController.session.myPeerID.hashValue)
+        self.viewController = viewController
         
         mytank = BlueTank(attribute: false, client: self, peerID: viewController.session.myPeerID, identifier: identifier)
         
         var running: Bool = true
         
         let queue=DispatchQueue.global(qos: .default)
-        queue.async{
-            while(running){
-                DispatchQueue.main.async{
+        queue.async {
+            while(running) {
+                DispatchQueue.main.async {
                     let view1=viewController.player.paint()
                     
                     if (self.isOver == true) {
@@ -51,19 +50,21 @@ class BluetoothTankWarClient:TankWarClient{
                     }
                     
                     let view=viewController.view.viewWithTag(100)
-                    if(view != nil){
+                    
+                    if(view != nil) {
                         view?.removeFromSuperview()
                     }
+                    
                     viewController.view.insertSubview(view1, at: 0)
                 }
                 Thread.sleep(forTimeInterval: 0.06)
             }
             
-            DispatchQueue.main.async{
+            DispatchQueue.main.async {
                 Sound.stopAll()
                 
                 let view=viewController.view.viewWithTag(100)
-                if(view != nil){
+                if(view != nil) {
                     view?.removeFromSuperview()
                 }
                 
@@ -71,7 +72,7 @@ class BluetoothTankWarClient:TankWarClient{
                 viewController.fireButton.isHidden=true
                 viewController.gameStatus.isHidden = false
                 
-                if(self.isYouWin){
+                if(self.isYouWin) {
                     viewController.gameStatus.text = "You Win !!"
                 }
                 else{
@@ -79,7 +80,7 @@ class BluetoothTankWarClient:TankWarClient{
                 }
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 viewController.assistant.stop()
                 
                 let view=viewController.storyboard?.instantiateViewController(withIdentifier: "View")
@@ -91,15 +92,16 @@ class BluetoothTankWarClient:TankWarClient{
         }
     }
     
-    func updateEnemyLocation(_ str:String){
+    func updateEnemyLocation(_ str:String) {
         print(str)
-        for i in 0 ... enemyTank.count-1{
-            if(str.contains(enemyTank[i].peerID.displayName)){
+        for i in 0 ... enemyTank.count - 1 {
+            if(str.contains(enemyTank[i].peerID.displayName)) {
                 var range1 = (str as NSString).range(of: "x:")
                 var range2 = (str as NSString).range(of: "y:")
                 var index1 = range1.location+range1.length
                 var index2 = range2.location
                 var x = (str as NSString).substring( with: NSMakeRange(index1, index2-index1))
+                
                 enemyTank[i].x = CGFloat((x as NSString).integerValue)
                 range1 = (str as NSString).range(of: "y:")
                 range2 = (str as NSString).range(of: "toward:")
@@ -108,6 +110,7 @@ class BluetoothTankWarClient:TankWarClient{
                 x = (str as NSString).substring( with: NSMakeRange(index1, index2-index1))
                 enemyTank[i].y = CGFloat((x as NSString).integerValue)
                 x = (str as NSString).substring(from: range2.location+range2.length)
+                
                 switch x {
                 case "up":
                     enemyTank[i].playerTankToward = .up
@@ -124,7 +127,7 @@ class BluetoothTankWarClient:TankWarClient{
         }
     }
     
-    func updateShell(_ str:String){
+    func updateShell(_ str:String) {
         print(str)
         var range1 = (str as NSString).range(of: "x:")
         var range2 = (str as NSString).range(of: "y:")
@@ -132,14 +135,17 @@ class BluetoothTankWarClient:TankWarClient{
         var index2 = range2.location
         let strX = (str as NSString).substring( with: NSMakeRange(index1, index2-index1))
         let shellX = CGFloat((strX as NSString).integerValue)
+        
         range1 = (str as NSString).range(of: "y:")
         range2 = (str as NSString).range(of: "toward:")
         index1 = range1.location+range1.length
         index2 = range2.location
+        
         let strY = (str as NSString).substring( with: NSMakeRange(index1, index2-index1))
         let shellY = CGFloat((strY as NSString).integerValue)
         let strToward = (str as NSString).substring(from: range2.location+range2.length)
         let shellToward:Toward
+        
         switch strToward {
         case "up":
             shellToward = Toward.up
@@ -152,29 +158,33 @@ class BluetoothTankWarClient:TankWarClient{
         default:
             shellToward = Toward.up;
         }
+        
         range1 = (str as NSString).range(of: "shellIdentifier:")
         range2 = (str as NSString).range(of: "x:")
         index1 = range1.location+range1.length
         index2 = range2.location
+        
         let id = ((str as NSString).substring( with: NSMakeRange(index1, index2-index1)) as NSString).intValue
         shells.append(Shell(x:shellX,y:shellY,toward:shellToward,client:self,attribute:true,id:id))
     }
     
-    func updateExplode(_ str:String){
+    func updateExplode(_ str:String) {
         print(str)
+        
         var range1 = (str as NSString).range(of: "explode")
         let range2 = (str as NSString).range(of: "shellIdentifier:")
         var index1 = range1.location+range1.length
         let index2 = range2.location
         let peerIDName = (str as NSString).substring( with: NSMakeRange(index1, index2-index1))
+        
         print(peerIDName)
+        
         range1 = (str as NSString).range(of: "shellIdentifier:")
         index1 = range1.location+range1.length
         let shellID = (str as NSString).substring(from: index1)
         let id = (shellID as NSString).intValue
         
-        for i in 0..<shells.count{
-            //let m = shells[i]
+        for i in 0..<shells.count {
             guard let m=shells[safe: i] else { break }
             print(m.shellID)
             if(id==m.shellID){
@@ -184,8 +194,7 @@ class BluetoothTankWarClient:TankWarClient{
             }
         }
         
-        for i in 0..<enemyTank.count{
-            //let t = enemyTank[i]
+        for i in 0..<enemyTank.count {
             guard let t=enemyTank[safe: i] else { break }
             if(peerIDName == t.peerID.displayName){
                 t.isLive = false
@@ -196,8 +205,6 @@ class BluetoothTankWarClient:TankWarClient{
     }
     
     override func paint()->UIView{
-        //let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeight)/2, width: Tank.paintWidth, height: Tank.paintHeight))
-        
         var widthScale: CGFloat
         var heightScale: CGFloat
         
@@ -216,76 +223,69 @@ class BluetoothTankWarClient:TankWarClient{
         let view=UIView(frame: CGRect(x: CGFloat(screenWidth - Tank.paintWidth) / 2, y: CGFloat(screenHeight - Tank.paintHeight) / 2, width: Tank.paintWidth, height: Tank.paintHeight))
         
         view.transform = CGAffineTransform(scaleX: widthScale, y: heightScale)
-        
-        
         view.tag=100
-        //view.backgroundColor = UIColor.black
         view.backgroundColor = UIColor(patternImage: UIImage(named:"tile4")!)
 
-        if(mytank.isLive){
+        if(mytank.isLive) {
             let xx=mytank.x
             let yy=mytank.y
+            
             mytank.move()
-            if((xx != mytank.x)||(yy != mytank.y)){
-            do{
-                try viewController.session.send(("location"+mytank.peerID.displayName+"identifier:"+mytank.identifier+"x:\(mytank.x)y:\(mytank.y)toward:\(mytank.playerTankToward)").data(using: String.Encoding.utf16,
-                    allowLossyConversion: false)!, toPeers: viewController.session.connectedPeers,
-                    with: MCSessionSendDataMode.unreliable)
-                print("send location success")
-            }
-            catch let error as NSError {
-            print("Error sending data: \(error.localizedDescription)")
-            }
+            if((xx != mytank.x)||(yy != mytank.y)) {
+                do{
+                    try viewController.session.send(("location"+mytank.peerID.displayName+"identifier:"+mytank.identifier+"x:\(mytank.x)y:\(mytank.y)toward:\(mytank.playerTankToward)").data(using: String.Encoding.utf16,
+                        allowLossyConversion: false)!, toPeers: viewController.session.connectedPeers,
+                        with: MCSessionSendDataMode.unreliable)
+                    print("send location success")
+                }
+                catch let error as NSError {
+                print("Error sending data: \(error.localizedDescription)")
+                }
             }
             mytank.draw(view)
         }
 
-        for i in 0..<shells.count
-        {
+        for i in 0..<shells.count {
             guard let m=shells[safe: i] else { break }
-            //let m=shells[i]
             m.fly()
             m.hitEdge()
             m.hitTank(mytank)
             m.hitWall(walls)
             if(!m.isLive){
                 shells.remove(at: i)
-                //i = i - 1
             }
             else{
                 m.draw(view)
             }
         }
         
-        for i in 0..<enemyTank.count
-        {
+        for i in 0..<enemyTank.count {
             guard let badtank=enemyTank[safe: i] else { break }
-            //let badtank=enemyTank[i]
+
             if(badtank.isLive){
                 badtank.draw(view)
             }
             else{
                 enemyTank.remove(at: i)
-                //i = i - 1
             }
         }
 
-        for i in 0..<explodes.count
-        {
+        for i in 0..<explodes.count {
             guard let e=explodes[safe: i] else { break }
-            //let e=explodes[i];
             if(e.time>0){
                 e.draw(view);
             }
             else{
                 explodes.remove(at: i)
-                //i = i - 1
             }
         }
-        if((enemyTank.count==0)||(mytank.isLive==false&&enemyTank.count==1)){
+        
+        if((enemyTank.count==0)||(mytank.isLive==false&&enemyTank.count==1)) {
             isOver = true
         }
+        
         walls.draw(view)
+        
         return view
     }
 }
