@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TankWarClient{
+class TankWarClient {
     var myTank:Tank!
     var tanks:[Tank]
     var shells:[Shell]
@@ -17,7 +17,7 @@ class TankWarClient{
     var badTankInterval1:Int=0
     var badTankInterval2:Int=0
     
-    init(){
+    init() {
         shells=[]
         walls=Wall()
         explodes=[]
@@ -26,8 +26,6 @@ class TankWarClient{
     }
     
     func paint()->UIView? {
-        //let view=UIView(frame: CGRect(x: 0, y: (736-Tank.paintHeight)/2, width: Tank.paintWidth, height: Tank.paintHeight))
-        
         var view: UIView?
         var widthScale: CGFloat
         var heightScale: CGFloat
@@ -54,31 +52,29 @@ class TankWarClient{
         myTank.move()
         myTank.draw(view!)
         
-        if(Tank.badTankCount < 50 ){
+        if(Tank.badTankCount < 50 ) {
             if(tanks.count < 35){
-                if(badTankInterval1 > 100){
-                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: 0, tanks: tanks, badi: -1)){
+                if(badTankInterval1 > 100) {
+                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: 0, tanks: tanks, badi: -1)) {
                         tanks.append(Tank(x: Tank.paintWidth-32, y: 0, attribute: false, client: self,toward: .down))
                         badTankInterval1=0
                     }
-                }
-                else{
+                } else {
                     badTankInterval1 += 1
                 }
-                if(badTankInterval2>100){
-                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: Tank.paintHeight-32, tanks: tanks, badi: -1)){
+                
+                if(badTankInterval2>100) {
+                    if(drand48() < 0.1 && myTank.colliedsWithTanks(Tank.paintWidth-32, y: Tank.paintHeight-32, tanks: tanks, badi: -1)) {
                         tanks.append(Tank(x:Tank.paintWidth-32, y: Tank.paintHeight-32, attribute: false, client: self,toward: .up))
                         badTankInterval2=0
                     }
-                }
-                else{
+                } else {
                     badTankInterval2 += 1
                 }
             }
         }
         
-        for i in 0..<shells.count
-        {
+        for i in 0..<shells.count {
             guard let m=shells[safe: i] else { break }
             m.fly()
             m.hitEdge()
@@ -86,17 +82,17 @@ class TankWarClient{
             m.hitTanks(tanks)
             m.hitWall(walls)
             
-            if(!m.isLive){
+            if(!m.isLive) {
                 shells.remove(at: i)
             }
             else{
                 m.draw(view!)
             }
         }
-        for i in 0..<tanks.count
-        {
+        
+        for i in 0..<tanks.count {
             guard let badtank=tanks[safe: i] else { break }
-            if(badtank.isLive){
+            if(badtank.isLive) {
                 badtank.move(i)
                 badtank.badFire()
                 badtank.draw(view!)
@@ -107,10 +103,9 @@ class TankWarClient{
             }
         }
      
-        for i in 0..<explodes.count
-        {
+        for i in 0..<explodes.count {
             guard let e=explodes[safe: i] else { break }
-            if(e.time>0){
+            if(e.time>0) {
                 e.draw(view!);
             }
             else{
@@ -120,35 +115,9 @@ class TankWarClient{
         
         walls.draw(view!)
         
-        /*var m:Shell
-        var t:Tank
-        for(var i=0;i<shells.count;i++)
-        {
-        m=shells[i];
-        m.hitWall(walls);
-        m.hitTanks(tanks);
-        m.hitTank(myTank);
-        //m.draw(temporarypaint);//画画布上；
-        
-        //if(!m.isLive())
-        //missiles.remove(m);
-        //else m.draw(g);
-        }
-        for(var i=0;i<tanks.count;i++)
-        {
-        t=tanks[i];
-        t.colliedsWithWalls(walls);
-        t.colliedsWithTanks(tanks);
-        //t.draw(g);
-        }*/
-        
-        // Game over, no more tanks to kill
-        if((tanks.count == 0) || (myTank.isLive == false && tanks.count >= 1)){
-            //view = nil
-            //return view!
+        if((tanks.count == 0) || (myTank.isLive == false && tanks.count >= 1)) {
             SingleViewController.isOver = true
         }
-            return view!
-        
+        return view!
     }
 }

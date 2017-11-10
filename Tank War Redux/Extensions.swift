@@ -5,6 +5,8 @@
 //  Created by Keith Davis on 11/3/17.
 //  Copyright © 2017 Keith Davis. All rights reserved.
 //
+//  Note: PeerID code found on Gist.
+//
 
 import MultipeerConnectivity
 
@@ -17,32 +19,13 @@ extension Collection {
 }
 
 extension UserDefaults {
-    
-    ///
-    /// The key used to store the local device's PeerID display name.
-    ///
-    
+    /// Keys for storing a reusable peerID.
     fileprivate static let kLocalPeerDisplayNameKey = "kLocalPeerDisplayNameKey"
-    
-    ///
-    /// The key used to store the archive of the local device's PeerID.
-    ///
     fileprivate static let kLocalPeerIDKey = "kLocalPeerIDKey"
-    
 }
 
 extension MCPeerID {
-    
-    ///
     /// Returns a reusable PeerID for the local device that will be stable over time.
-    ///
-    /// If a PeerID with the specified display name is saved, it is unarchived and returned. If a Peer ID with the specified name is not saved, it is created, archived, saved and returned.
-    ///
-    /// - parameter displayName: The display name for the local peer. The maximum allowable length is 63 bytes in UTF-8 encoding. This parameter may not be nil or an empty string.
-    ///
-    /// - returns: A PeerID that is stable over time.
-    ///
-    
     public static func reusableInstance(withDisplayName displayName: String) -> MCPeerID {
         
         let defaults = UserDefaults.standard
@@ -69,13 +52,8 @@ extension MCPeerID {
         
     }
     
-    ///
-    /// Archives and saves the current peer identifier in the specified user defaults for later reuse.
-    ///
-    /// - parameter userDefaults: The user defaults suite where the PeerID and its display name will be stored.
-    ///
     private func save(in userDefaults: UserDefaults) {
-        
+        /// Archives and saves the current peer identifier in the specified user defaults for later reuse.
         let peerIDData = NSKeyedArchiver.archivedData(withRootObject: self)
         userDefaults.set(peerIDData, forKey: UserDefaults.kLocalPeerIDKey)
         userDefaults.set(displayName, forKey: UserDefaults.kLocalPeerDisplayNameKey)

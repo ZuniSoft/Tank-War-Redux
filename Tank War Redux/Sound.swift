@@ -5,6 +5,11 @@
 //  Created by Keith Davis on 11/8/17.
 //  Copyright © 2017 Keith Davis. All rights reserved.
 //
+// Note: This code was stolen from an example that I
+//       forgot where I obtained it. If you recognize it
+//       as yours, please let me know so I can give you
+//       credit.
+//
 
 import Foundation
 import AVFoundation

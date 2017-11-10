@@ -17,18 +17,19 @@ class Shell{
     var isGood=true
     var myClient:TankWarClient
     var shellID:Int32!
+    
     static let speed:CGFloat = 8
     static let shellImage1 = UIImage(named: "bullet.png")
     static let shellImage2 = UIImage(named: "bullet_d.png")
     static let shellImage3 = UIImage(named: "bullet_l.png")
     static let shellImage4 = UIImage(named: "bullet_r.png")
 
-    init(tank:Tank,client:TankWarClient,attribute:Bool){
+    init(tank:Tank,client:TankWarClient,attribute:Bool) {
         myClient=client
         toward=tank.playerTankToward
         isGood=attribute
     
-        switch toward{
+        switch toward {
         case .up:
             x=tank.x+11
             y=tank.y-10
@@ -45,12 +46,13 @@ class Shell{
         
     }
     
-    init(tank:BlueTank,client:BluetoothTankWarClient,attribute:Bool,id:Int32){
+    init(tank:BlueTank,client:BluetoothTankWarClient,attribute:Bool,id:Int32) {
         shellID = id
         myClient=client
         toward=tank.playerTankToward
         isGood=attribute
-        switch toward{
+        
+        switch toward {
         case .up:
             x=tank.x+11
             y=tank.y-10
@@ -75,7 +77,7 @@ class Shell{
         }
     }
     
-    init(x:CGFloat,y:CGFloat,toward:Toward,client:BluetoothTankWarClient,attribute:Bool,id:Int32){
+    init(x:CGFloat,y:CGFloat,toward:Toward,client:BluetoothTankWarClient,attribute:Bool,id:Int32) {
         shellID = id
         myClient=client
         self.toward = toward
@@ -84,9 +86,9 @@ class Shell{
         self.y=y
     }
     
-    func hitWall(_ walls:Wall){
-        for i in 0 ..< walls.ws.count{
-            if(intersects(self.getRect(), r2: walls.ws[i])){
+    func hitWall(_ walls:Wall) {
+        for i in 0 ..< walls.ws.count {
+            if(intersects(self.getRect(), r2: walls.ws[i])) {
                 myClient.explodes.append(Explode(x: self.x,y: self.y))
                 self.isLive=false
                 break
@@ -94,41 +96,41 @@ class Shell{
         }
     }
     
-    func hitTank(_ myTank:Tank){
-        if(intersects(self.getRect(), r2: myTank.getRect())){
+    func hitTank(_ myTank:Tank) {
+        if(intersects(self.getRect(), r2: myTank.getRect())) {
             myClient.explodes.append(Explode(x: self.x,y: self.y))
             self.isLive=false
             myTank.isLive=false
         }
     }
     
-    func hitTank(_ myTank:BlueTank){
-        if(intersects(self.getRect(), r2: myTank.getRect())){
+    func hitTank(_ myTank:BlueTank) {
+        if(intersects(self.getRect(), r2: myTank.getRect())) {
             myClient.explodes.append(Explode(x: self.x,y: self.y))
             self.isLive=false
             myTank.isLive=false
             (myClient as! BluetoothTankWarClient).isYouWin = false
-            do{
+            do {
                 try (myClient as! BluetoothTankWarClient).viewController.session.send(("explode"+myTank.peerID.displayName+"shellIdentifier:\(self.shellID)").data(using: String.Encoding.utf16,
                     allowLossyConversion: false)!, toPeers: (myClient as! BluetoothTankWarClient).viewController.session.connectedPeers,
                     with: MCSessionSendDataMode.unreliable)
                 print("send explodes success")
-            }
-            catch let error as NSError {
+            } catch let error as NSError {
                 print("Error sending data: \(error.localizedDescription)")
             }
         }
     }
     
-    func hitTanks(_ tanks:[BlueTank]){
-        if(intersects(self.getRect(), r2: myClient.myTank.getRect())){
+    func hitTanks(_ tanks:[BlueTank]) {
+        if(intersects(self.getRect(), r2: myClient.myTank.getRect())) {
             myClient.explodes.append(Explode(x: self.x,y: self.y))
             self.isLive=false
             //myClient.myTank.isLive=False
         }
-        for i in 0 ..< myClient.tanks.count{
+        
+        for i in 0 ..< myClient.tanks.count {
             let t = tanks[i]
-            if(intersects(self.getRect(), r2: t.getRect())){
+            if(intersects(self.getRect(), r2: t.getRect())) {
                 myClient.explodes.append(Explode(x: self.x,y: self.y))
                 self.isLive=false
                 if(self.isGood==true){
@@ -138,33 +140,34 @@ class Shell{
         }
     }
     
-    func hitTanks(_ tanks:[Tank]){
-        if(intersects(self.getRect(), r2: myClient.myTank.getRect())){
+    func hitTanks(_ tanks:[Tank]) {
+        if(intersects(self.getRect(), r2: myClient.myTank.getRect())) {
             myClient.explodes.append(Explode(x: self.x,y: self.y))
             self.isLive=false
             //myClient.myTank.isLive=False
         }
-        for i in 0 ..< myClient.tanks.count{
+        
+        for i in 0 ..< myClient.tanks.count {
             let t = tanks[i]
             if(intersects(self.getRect(), r2: t.getRect())){
                 myClient.explodes.append(Explode(x: self.x,y: self.y))
                 self.isLive=false
-                if(self.isGood==true){
+                if(self.isGood==true) {
                     t.isLive=false
                 }
             }
         }
     }
     
-    func hitEdge(){
-        if(self.x<=0||self.y<=0||self.x>=Tank.paintWidth-10||self.y>=Tank.paintHeight-10){
+    func hitEdge() {
+        if(self.x<=0||self.y<=0||self.x>=Tank.paintWidth-10||self.y>=Tank.paintHeight-10) {
             self.isLive=false
             myClient.explodes.append(Explode(x: self.x,y: self.y))
         }
     }
     
     func fly(){
-        switch toward{
+        switch toward {
         case .up:
             y -= Shell.speed
         case .down:
@@ -176,12 +179,13 @@ class Shell{
         }
     }
     
-    func getRect()->Rectangle{
+    func getRect()->Rectangle {
         return Rectangle(x: self.x,y: self.y,w: 10,h: 10)
     }
     
-    func draw(_ view:UIView){
+    func draw(_ view:UIView) {
         var shell:UIImageView
+        
         switch toward{
         case .up:
             shell=UIImageView(image: Shell.shellImage1)

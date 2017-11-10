@@ -24,24 +24,10 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.white
-        
-        //let deskView = UIView(frame:CGRectMake(4,10,400,308))
-        //deskView.backgroundColor = UIColor(patternImage: UIImage(named:"desk.jpg")!)
-        //view.addSubview(deskView)
-        // Do any additional setup after loading the view, typically from a nib.
-        
     }
-    /*override func touchesEnded(touches: Set<UITouch>,
-     withEvent event: UIEvent?) {
-     let view=self.view.viewWithTag(100)
-     let subVc=SubViewController()
-     subVc.modalTransitionStyle = .PartialCurl
-     self.presentViewController(subVc, animated: true, completion: nil)
-     view?.removeFromSuperview()
-     }*/
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

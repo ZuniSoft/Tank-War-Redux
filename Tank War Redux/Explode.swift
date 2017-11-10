@@ -16,13 +16,13 @@ class Explode{
     static let image2=UIImage(named: "explode2.png")!
     static let image3=UIImage(named: "explode3.png")!
 
-    init(x:CGFloat,y:CGFloat){
+    init(x:CGFloat,y:CGFloat) {
         self.x=x-5
         self.y=y-5
         time=4
     }
     
-    func draw(_ view:UIView){
+    func draw(_ view:UIView) {
         Sound.play(file: "explosion.wav")
         
         var explode=UIImageView(image: Explode.image1)
