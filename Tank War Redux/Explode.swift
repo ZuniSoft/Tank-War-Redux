@@ -25,19 +25,18 @@ class Explode{
     func draw(_ view:UIView) {
         Sound.play(file: "explosion.wav")
         
+        time-=1
+        
         var explode=UIImageView(image: Explode.image1)
         explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
-        time-=1
         view.addSubview(explode)
         
         explode=UIImageView(image: Explode.image2)
         explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
-        time-=1
         view.addSubview(explode)
         
         explode=UIImageView(image: Explode.image3)
         explode.frame = CGRect(x: x, y: y, width: 25, height: 25)
-        time-=1
         view.addSubview(explode)
     }
 }

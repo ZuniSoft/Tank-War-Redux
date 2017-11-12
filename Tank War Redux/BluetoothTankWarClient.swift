@@ -29,6 +29,7 @@ class BluetoothTankWarClient:TankWarClient{
         viewController.connect.isHidden=true
         viewController.beginGame.isHidden=true
         viewController.mainMenu.isHidden = true
+        viewController.help.isHidden = true
         viewController.analogueStick.isHidden=false
         viewController.fireButton.isHidden=false
         viewController.bluetoothTextView.isHidden=true

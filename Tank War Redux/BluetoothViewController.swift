@@ -27,6 +27,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
     @IBOutlet weak var connect: UIButton!
     @IBOutlet weak var beginGame: UIButton!
     @IBOutlet weak var mainMenu: UIButton!
+    @IBOutlet weak var help: UIButton!
     
     @objc func buttonPressed(_ button:JSButton) {
     }
@@ -93,9 +94,42 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         self.present(view, animated: true, completion: nil)
     }
     
+    @IBAction func help(_ sender: UIButton) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let message = NSMutableAttributedString(
+            string: """
+            \nTo play a multiplayer game do the following:
+            
+            1. One player acts as the host, selects multiplayer from menu\n
+            2. All other players select multiplayer from menu and wait\n
+            3. Host selects Connect from menu and adds players\n
+            4. All other players accept the invitation from the host\n
+            5. After all peers accept their invitation, host selects done on the connect dialog\n
+            6. Each player should see a list of players with the color of their tanks\n
+            7. Host selects Start Game\n
+            8. All players begin shooting at each other
+            """,
+            attributes: [
+                NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.foregroundColor : UIColor.black
+            ]
+        )
+        
+        let alert = UIAlertController(title: "Help", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.setValue(message, forKey: "attributedMessage")
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        help.isHidden = false
+        mainMenu.isHidden = false
         beginGame.isEnabled = false
         analogueStick.delegate=self
         fireButton.titleLabel.text="F"
@@ -127,11 +161,30 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
         super.didReceiveMemoryWarning()
     }
     
+    func setupTank(_ str:String) {
+        var range = (str as NSString).range(of: self.peerID.displayName)
+        var index = range.location+range.length+2
+        var id = (str as NSString).substring( with: NSMakeRange(index, 1))
+        
+        self.player.identifier=id
+        print(id)
+        self.player.mytank = BlueTank(attribute: true, client: player, peerID: self.peerID, identifier: id)
+        
+        for i in 0 ... self.session.connectedPeers.count-1 {
+            range = (str as NSString).range(of: self.session.connectedPeers[i].displayName)
+            index = range.location+range.length+2
+            id = (str as NSString).substring( with: NSMakeRange(index, 1))
+            print(id)
+            self.player.enemyTank.append(BlueTank(attribute: true, client: player, peerID: self.session.connectedPeers[i], identifier: id))
+        }
+    }
+    
     func updateText(_ text : String) {
         var text = text
         text = (text as NSString).substring(from: 8)
         self.bluetoothTextView.text=text
     }
+    
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController)  {
         var str = ""
         
@@ -181,25 +234,7 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
             }
         }
     }
-    
-    func setupTank(_ str:String) {
-        var range = (str as NSString).range(of: self.peerID.displayName)
-        var index = range.location+range.length+2
-        var id = (str as NSString).substring( with: NSMakeRange(index, 1))
-        
-        self.player.identifier=id
-        print(id)
-        self.player.mytank = BlueTank(attribute: true, client: player, peerID: self.peerID, identifier: id)
-        
-        for i in 0 ... self.session.connectedPeers.count-1 {
-            range = (str as NSString).range(of: self.session.connectedPeers[i].displayName)
-            index = range.location+range.length+2
-            id = (str as NSString).substring( with: NSMakeRange(index, 1))
-            print(id)
-            self.player.enemyTank.append(BlueTank(attribute: true, client: player, peerID: self.session.connectedPeers[i], identifier: id))
-        }
-    }
-    
+
     func session(_ session: MCSession,
                  didStartReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID, with progress: Progress)  {

@@ -178,6 +178,18 @@
                                     <action selector="mainMenu:" destination="Xql-fI-Lac" eventType="touchUpInside" id="wOK-h0-xyi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7p-Sm-Uze">
+                                <rect key="frame" x="295" y="623" width="69" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="oTB-oO-NPI"/>
+                                    <constraint firstAttribute="width" constant="69" id="sv0-QM-ju0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Help"/>
+                                <connections>
+                                    <action selector="help:" destination="Xql-fI-Lac" eventType="touchUpInside" id="aI2-I3-FHd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -187,6 +199,8 @@
                             <constraint firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" constant="20" symbolic="YES" id="8sd-On-yHd"/>
                             <constraint firstItem="RM0-Bl-Hz2" firstAttribute="bottom" secondItem="gVB-RG-b2m" secondAttribute="bottom" id="A2T-9Y-P1e"/>
                             <constraint firstItem="SVi-Sn-HNr" firstAttribute="leading" secondItem="2Sw-9p-s2V" secondAttribute="leadingMargin" constant="51" id="Cfg-ec-azp"/>
+                            <constraint firstItem="voV-YM-ZDh" firstAttribute="top" secondItem="s7p-Sm-Uze" secondAttribute="bottom" constant="8" id="Fkh-2V-BhR"/>
+                            <constraint firstAttribute="trailing" secondItem="s7p-Sm-Uze" secondAttribute="trailing" constant="11" id="JdO-T7-ixg"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="centerY" secondItem="2Sw-9p-s2V" secondAttribute="centerY" constant="-42.5" id="QRO-zc-2jg"/>
                             <constraint firstItem="xEk-il-UbK" firstAttribute="top" secondItem="SVi-Sn-HNr" secondAttribute="bottom" constant="24" id="Stq-66-t1U"/>
                             <constraint firstItem="SVi-Sn-HNr" firstAttribute="top" secondItem="VES-hq-WJs" secondAttribute="bottom" constant="22" id="hbu-kc-ZJD"/>
@@ -206,6 +220,7 @@
                         <outlet property="connect" destination="xEk-il-UbK" id="PvB-Ui-FNy"/>
                         <outlet property="fireButton" destination="gVB-RG-b2m" id="iWc-oI-tPe"/>
                         <outlet property="gameStatus" destination="8ZN-yS-yaM" id="Yh5-t1-BEz"/>
+                        <outlet property="help" destination="s7p-Sm-Uze" id="ZJ9-lb-dXq"/>
                         <outlet property="mainMenu" destination="n1u-kn-jZ9" id="793-Wo-syZ"/>
                     </connections>
                 </viewController>
