@@ -13,6 +13,7 @@
 
 import Foundation
 import AVFoundation
+import OSLog
 
 #if os(iOS) || os(tvOS)
     /// SoundCategory is a convenient wrapper for AVAudioSessions category constants.
@@ -33,15 +34,15 @@ import AVFoundation
             get {
                 switch self {
                 case .ambient:
-                    return AVAudioSessionCategoryAmbient
+                    return convertFromAVAudioSessionCategory(AVAudioSession.Category.ambient)
                 case .soloAmbient:
-                    return AVAudioSessionCategorySoloAmbient
+                    return convertFromAVAudioSessionCategory(AVAudioSession.Category.soloAmbient)
                 case .playback:
-                    return AVAudioSessionCategoryPlayback
+                    return convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)
                 case .record:
-                    return AVAudioSessionCategoryRecord
+                    return convertFromAVAudioSessionCategory(AVAudioSession.Category.record)
                 case .playAndRecord:
-                    return AVAudioSessionCategoryPlayAndRecord
+                    return convertFromAVAudioSessionCategory(AVAudioSession.Category.playAndRecord)
                 }
             }
         }
@@ -320,5 +321,14 @@ extension AVAudioPlayer: Player, AVAudioPlayerDelegate {
         func setCategory(_ category: String) throws
     }
     
-    extension AVAudioSession: Session {}
+extension AVAudioSession: Session {
+    public func setCategory(_ category: String) throws {
+        os_log("Could not set category")
+    }
+}
 #endif
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}

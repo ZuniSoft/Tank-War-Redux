@@ -187,7 +187,7 @@ class BluetoothTankWarClient:TankWarClient{
         
         for i in 0..<shells.count {
             guard let m=shells[safe: i] else { break }
-            print(m.shellID)
+            print(m.shellID!)
             if(id==m.shellID){
                 explodes.append(Explode(x:m.x,y:m.y))
                 m.isLive=false

@@ -112,16 +112,16 @@ class BluetoothViewController: UIViewController,MCBrowserViewControllerDelegate,
             8. All players begin shooting at each other
             """,
             attributes: [
-                NSAttributedStringKey.paragraphStyle: paragraphStyle,
-                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
-                NSAttributedStringKey.foregroundColor : UIColor.black
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                NSAttributedString.Key.font : UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body),
+                NSAttributedString.Key.foregroundColor : UIColor.black
             ]
         )
         
-        let alert = UIAlertController(title: "Help", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Help", message: "", preferredStyle: UIAlertController.Style.alert)
         
         alert.setValue(message, forKey: "attributedMessage")
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

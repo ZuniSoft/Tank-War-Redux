@@ -9,6 +9,7 @@
 //
 
 import MultipeerConnectivity
+import OSLog
 
 extension Collection {
     
@@ -39,25 +40,28 @@ extension MCPeerID {
         let oldDisplayName = defaults.string(forKey: UserDefaults.kLocalPeerDisplayNameKey)
         
         if oldDisplayName == displayName {
+        
+            guard let peerData = defaults.data(forKey: UserDefaults.kLocalPeerIDKey), let peerID = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(peerData) as? MCPeerID
             
-            guard let peerData = defaults.data(forKey: UserDefaults.kLocalPeerIDKey), let peerID = NSKeyedUnarchiver.unarchiveObject(with: peerData) as? MCPeerID else {
+            else {
                 return newPeerID()
             }
-            
             return peerID
-            
         } else {
             return newPeerID()
         }
-        
     }
+    
     
     private func save(in userDefaults: UserDefaults) {
         /// Archives and saves the current peer identifier in the specified user defaults for later reuse.
-        let peerIDData = NSKeyedArchiver.archivedData(withRootObject: self)
-        userDefaults.set(peerIDData, forKey: UserDefaults.kLocalPeerIDKey)
-        userDefaults.set(displayName, forKey: UserDefaults.kLocalPeerDisplayNameKey)
-        userDefaults.synchronize()
-        
+        do {
+            let peerIDData = try NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
+            userDefaults.set(peerIDData, forKey: UserDefaults.kLocalPeerIDKey)
+            userDefaults.set(displayName, forKey: UserDefaults.kLocalPeerDisplayNameKey)
+            userDefaults.synchronize()
+        } catch {
+            os_log("Failed to save peerID...", log: OSLog.default, type: .error)
+        }
     }
 }

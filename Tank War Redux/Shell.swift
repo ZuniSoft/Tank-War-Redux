@@ -111,7 +111,7 @@ class Shell{
             myTank.isLive=false
             (myClient as! BluetoothTankWarClient).isYouWin = false
             do {
-                try (myClient as! BluetoothTankWarClient).viewController.session.send(("explode"+myTank.peerID.displayName+"shellIdentifier:\(self.shellID)").data(using: String.Encoding.utf16,
+                try (myClient as! BluetoothTankWarClient).viewController.session.send(("explode"+myTank.peerID.displayName+"shellIdentifier:\(String(describing: self.shellID))").data(using: String.Encoding.utf16,
                     allowLossyConversion: false)!, toPeers: (myClient as! BluetoothTankWarClient).viewController.session.connectedPeers,
                     with: MCSessionSendDataMode.unreliable)
                 print("send explodes success")
